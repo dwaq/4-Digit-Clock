@@ -64,6 +64,7 @@
 <layer number="54" name="bGND_GNDA" color="1" fill="9" visible="no" active="no"/>
 <layer number="56" name="wert" color="7" fill="1" visible="no" active="no"/>
 <layer number="57" name="tCAD" color="7" fill="1" visible="no" active="no"/>
+<layer number="90" name="Modules" color="5" fill="1" visible="yes" active="yes"/>
 <layer number="91" name="Nets" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="92" name="Busses" color="1" fill="1" visible="yes" active="yes"/>
 <layer number="93" name="Pins" color="2" fill="1" visible="no" active="yes"/>
@@ -2139,7 +2140,6 @@ Source: http://www.hirose.co.jp/cataloge_hp/e24000019.pdf</description>
 <part name="R3" library="ng" deviceset="RESISTOR" device="1206" value="1K"/>
 <part name="P+2" library="supply1" deviceset="VCC" device=""/>
 <part name="S1" library="ng" deviceset="6MM_SWITCH" device="6MM_SWITCH"/>
-<part name="C3" library="ng" deviceset="UNPOLARIZED_CAPACITOR" device="1206" value=".1uF"/>
 <part name="R1" library="ng" deviceset="RESISTOR" device="1206" value="1K"/>
 <part name="PIN13LED" library="ng" deviceset="LED" device="1206"/>
 <part name="C2" library="ng" deviceset="UNPOLARIZED_CAPACITOR" device="1206" value="10uF"/>
@@ -2189,7 +2189,6 @@ Source: http://www.hirose.co.jp/cataloge_hp/e24000019.pdf</description>
 <instance part="R3" gate="G$1" x="58.42" y="110.49" rot="R90"/>
 <instance part="P+2" gate="VCC" x="-13.97" y="113.03"/>
 <instance part="S1" gate="2" x="39.37" y="99.06" rot="R270"/>
-<instance part="C3" gate="1" x="48.26" y="110.49" rot="R90"/>
 <instance part="R1" gate="G$1" x="2.54" y="109.22" smashed="yes" rot="R90">
 <attribute name="NAME" x="1.0414" y="105.41" size="1.778" layer="95" rot="R90"/>
 <attribute name="VALUE" x="5.842" y="110.49" size="1.778" layer="96" rot="R90"/>
@@ -2240,7 +2239,7 @@ Source: http://www.hirose.co.jp/cataloge_hp/e24000019.pdf</description>
 </segment>
 <segment>
 <wire x1="58.42" y1="115.57" x2="58.42" y2="119.38" width="0.1524" layer="91"/>
-<label x="55.88" y="119.38" size="1.778" layer="95"/>
+<label x="58.42" y="119.38" size="1.778" layer="95"/>
 <pinref part="R3" gate="G$1" pin="2"/>
 </segment>
 <segment>
@@ -2341,18 +2340,13 @@ Source: http://www.hirose.co.jp/cataloge_hp/e24000019.pdf</description>
 <net name="RESET" class="0">
 <segment>
 <wire x1="58.42" y1="96.52" x2="58.42" y2="105.41" width="0.1524" layer="91"/>
-<wire x1="44.45" y1="96.52" x2="44.45" y2="92.71" width="0.1524" layer="91"/>
-<wire x1="44.45" y1="92.71" x2="58.42" y2="92.71" width="0.1524" layer="91"/>
-<wire x1="58.42" y1="92.71" x2="58.42" y2="96.52" width="0.1524" layer="91"/>
+<wire x1="44.45" y1="96.52" x2="58.42" y2="96.52" width="0.1524" layer="91"/>
 <wire x1="68.58" y1="96.52" x2="58.42" y2="96.52" width="0.1524" layer="91"/>
-<wire x1="48.26" y1="105.41" x2="48.26" y2="96.52" width="0.1524" layer="91"/>
-<wire x1="58.42" y1="96.52" x2="48.26" y2="96.52" width="0.1524" layer="91"/>
 <junction x="58.42" y="96.52"/>
 <label x="69.85" y="100.33" size="1.778" layer="95" rot="R180"/>
 <pinref part="R3" gate="G$1" pin="1"/>
 <pinref part="S1" gate="2" pin="S1"/>
 <pinref part="U$1" gate="G$1" pin="PC6(/RESET)"/>
-<pinref part="C3" gate="1" pin="1"/>
 </segment>
 <segment>
 <wire x1="40.64" y1="17.78" x2="25.4" y2="17.78" width="0.1524" layer="91"/>
@@ -2383,13 +2377,6 @@ Source: http://www.hirose.co.jp/cataloge_hp/e24000019.pdf</description>
 <pinref part="LED1" gate="G$1" pin="P$12"/>
 <wire x1="-35.56" y1="144.78" x2="-35.56" y2="138.43" width="0.1524" layer="91"/>
 <label x="-35.56" y="138.43" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="RTS#" class="0">
-<segment>
-<wire x1="48.26" y1="113.03" x2="48.26" y2="120.65" width="0.1524" layer="91"/>
-<label x="40.64" y="118.11" size="1.778" layer="95"/>
-<pinref part="C3" gate="1" pin="2"/>
 </segment>
 </net>
 <net name="D1" class="0">
@@ -2635,14 +2622,6 @@ Source: http://www.hirose.co.jp/cataloge_hp/e24000019.pdf</description>
 <wire x1="21.59" y1="8.89" x2="-25.4" y2="8.89" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="N$1" class="0">
-<segment>
-<wire x1="-5.08" y1="76.2" x2="-5.08" y2="130.81" width="0.1524" layer="91"/>
-<wire x1="-5.08" y1="130.81" x2="21.59" y2="130.81" width="0.1524" layer="91"/>
-<wire x1="21.59" y1="130.81" x2="21.59" y2="76.2" width="0.1524" layer="91"/>
-<wire x1="21.59" y1="76.2" x2="-5.08" y2="76.2" width="0.1524" layer="91"/>
-</segment>
-</net>
 <net name="N$3" class="0">
 <segment>
 <pinref part="R6" gate="G$1" pin="1"/>
@@ -2659,6 +2638,14 @@ Source: http://www.hirose.co.jp/cataloge_hp/e24000019.pdf</description>
 <wire x1="85.09" y1="114.3" x2="85.09" y2="124.46" width="0.1524" layer="91"/>
 <pinref part="R2" gate="G$1" pin="2"/>
 <wire x1="85.09" y1="124.46" x2="81.28" y2="124.46" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$1" class="0">
+<segment>
+<wire x1="-5.08" y1="130.81" x2="-5.08" y2="76.2" width="0.1524" layer="91"/>
+<wire x1="-5.08" y1="76.2" x2="21.59" y2="76.2" width="0.1524" layer="91"/>
+<wire x1="21.59" y1="76.2" x2="21.59" y2="130.81" width="0.1524" layer="91"/>
+<wire x1="21.59" y1="130.81" x2="-5.08" y2="130.81" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
