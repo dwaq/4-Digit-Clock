@@ -349,6 +349,12 @@ UsedLibraryUrn="urn:adsk.eagle:library:176"
 UsedLibraryUrn="urn:adsk.eagle:library:177"
 
 [Win_1]
+Type="Control Panel"
+Loc="1920 0 3199 1001"
+State=1
+Number=0
+
+[Win_2]
 Type="Board Editor"
 Loc="0 0 1919 1017"
 State=1
@@ -394,9 +400,9 @@ AddLevel=2
 PadsSameType=0
 Layer=1
 
-[Win_2]
+[Win_3]
 Type="Schematic Editor"
-Loc="1912 -8 3191 993"
+Loc="1920 0 3199 1001"
 State=1
 Number=1
 File="barduino.sch"
@@ -441,12 +447,6 @@ PadsSameType=0
 Layer=91
 Views=" 1: -131.047 -37.3912 172.243 147.326"
 Sheet="1"
-
-[Win_3]
-Type="Control Panel"
-Loc="1912 -8 3191 993"
-State=1
-Number=0
 
 [Desktop]
 Screen="3200 1080"
