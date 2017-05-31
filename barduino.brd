@@ -786,8 +786,8 @@ design rules under a new name.</description>
 <attribute name="NAME" x="23.1216" y="45.3543" size="1.27" layer="25" rot="R180"/>
 <attribute name="VALUE" x="25.7886" y="45.3543" size="1.27" layer="27" rot="R90"/>
 </element>
-<element name="S1" library="ng" package="6MM_SWITCH" value="" x="21.2243" y="39.5123" smashed="yes" rot="R90">
-<attribute name="VALUE" x="26.3043" y="36.4643" size="1.27" layer="27" ratio="10" rot="R90"/>
+<element name="S1" library="ng" package="6MM_SWITCH" value="" x="-11.943021875" y="-7.09415625" smashed="yes" rot="R90">
+<attribute name="VALUE" x="-6.863021875" y="-10.14215625" size="1.27" layer="27" ratio="10" rot="R90"/>
 </element>
 <element name="R1" library="ng" package="1206" value="1K" x="20.2083" y="27.5743" smashed="yes" rot="R180">
 <attribute name="NAME" x="21.2243" y="27.0663" size="1.27" layer="25" rot="R180"/>
@@ -811,11 +811,11 @@ design rules under a new name.</description>
 <element name="R7" library="ng" package="1206" value="0" x="16.7793" y="20.0813" rot="R90"/>
 <element name="R2" library="ng" package="1206" value="0" x="20.2083" y="25.1613" rot="R180"/>
 <element name="LED1" library="microbuilder" package="SEGMENT-BL-Q56C43" value="" x="12.435840625" y="62.720221875"/>
-<element name="SG1" library="buzzer" library_urn="urn:adsk.eagle:library:113" package="F/CM12P" value="F/CM12P" x="3.037840625" y="-50.154840625">
-<attribute name="MF" value="" x="3.037840625" y="-50.154840625" size="1.778" layer="27" display="off"/>
-<attribute name="MPN" value="" x="3.037840625" y="-50.154840625" size="1.778" layer="27" display="off"/>
-<attribute name="OC_FARNELL" value="unknown" x="3.037840625" y="-50.154840625" size="1.778" layer="27" display="off"/>
-<attribute name="OC_NEWARK" value="unknown" x="3.037840625" y="-50.154840625" size="1.778" layer="27" display="off"/>
+<element name="SG1" library="buzzer" library_urn="urn:adsk.eagle:library:113" package="F/CM12P" value="F/CM12P" x="3.38328125" y="-20.894040625">
+<attribute name="MF" value="" x="3.38328125" y="-20.894040625" size="1.778" layer="27" display="off"/>
+<attribute name="MPN" value="" x="3.38328125" y="-20.894040625" size="1.778" layer="27" display="off"/>
+<attribute name="OC_FARNELL" value="unknown" x="3.38328125" y="-20.894040625" size="1.778" layer="27" display="off"/>
+<attribute name="OC_NEWARK" value="unknown" x="3.38328125" y="-20.894040625" size="1.778" layer="27" display="off"/>
 </element>
 <element name="X1" library="con-hirose" library_urn="urn:adsk.eagle:library:152" package="UX60A-MB-5ST" value="MINI-USB-UX60A-MB-5ST" x="19.05508125" y="5.311140625" rot="R90">
 <attribute name="MF" value="" x="19.05508125" y="5.311140625" size="1.778" layer="27" rot="R90" display="off"/>
@@ -823,6 +823,7 @@ design rules under a new name.</description>
 <attribute name="OC_FARNELL" value="unknown" x="19.05508125" y="5.311140625" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="OC_NEWARK" value="unknown" x="19.05508125" y="5.311140625" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
+<element name="S2" library="ng" package="6MM_SWITCH" value="" x="-13.408659375" y="-17.454878125"/>
 </elements>
 <signals>
 <signal name="VCC" class="1">
@@ -888,7 +889,6 @@ design rules under a new name.</description>
 <contactref element="C6" pad="1"/>
 <contactref element="C4" pad="1"/>
 <contactref element="C5" pad="1"/>
-<contactref element="S1" pad="2"/>
 <contactref element="PIN13LED" pad="2"/>
 <contactref element="C7" pad="1"/>
 <contactref element="U$1" pad="3"/>
@@ -912,10 +912,6 @@ design rules under a new name.</description>
 <wire x1="17.0333" y1="30.2413" x2="16.2903" y2="29.4983" width="0.4064" layer="1"/>
 <wire x1="17.0333" y1="30.9013" x2="17.0333" y2="30.2413" width="0.4064" layer="1"/>
 <wire x1="19.1923" y1="32.8063" x2="17.0333" y2="30.9013" width="0.4064" layer="1"/>
-<wire x1="19.1923" y1="32.8063" x2="20.4873" y2="32.9333" width="0.4064" layer="1"/>
-<wire x1="20.4873" y1="32.9333" x2="21.8593" y2="34.3053" width="0.4064" layer="1"/>
-<wire x1="21.8593" y1="34.3053" x2="21.8593" y2="39.7663" width="0.4064" layer="1"/>
-<wire x1="21.8593" y1="39.7663" x2="18.9383" y2="42.8143" width="0.4064" layer="1"/>
 <wire x1="24.9073" y1="27.0663" x2="24.9073" y2="31.1553" width="0.4064" layer="1"/>
 <wire x1="24.9073" y1="31.1553" x2="23.2563" y2="32.8063" width="0.4064" layer="1"/>
 <contactref element="SG1" pad="-"/>
@@ -934,7 +930,7 @@ design rules under a new name.</description>
 <wire x1="24.0284" y1="22.2292" x2="24.0183" y2="22.2393" width="0.4064" layer="1"/>
 <wire x1="20.65508125" y1="7.561140625" x2="20.65508125" y2="10.7365625" width="0.4064" layer="1"/>
 <wire x1="20.65508125" y1="10.7365625" x2="22.1917" y2="12.27318125" width="0.4064" layer="1"/>
-<wire x1="20.65508125" y1="7.561140625" x2="-0.772159375" y2="-50.154840625" width="0" layer="19" extent="1-1"/>
+<wire x1="20.65508125" y1="7.561140625" x2="-0.42671875" y2="-20.894040625" width="0" layer="19" extent="1-1"/>
 <wire x1="2.3013" y1="23.7893" x2="4.2253" y2="28.6983" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="PB7">
@@ -951,26 +947,20 @@ design rules under a new name.</description>
 </signal>
 <signal name="RESET">
 <contactref element="R3" pad="1"/>
-<contactref element="S1" pad="4"/>
 <contactref element="U$1" pad="29"/>
 <contactref element="ICSP" pad="5"/>
-<wire x1="23.5103" y1="42.8143" x2="23.2563" y2="42.6873" width="0.4064" layer="1"/>
 <wire x1="24.0183" y1="16.7793" x2="24.0183" y2="18.8113" width="0.4064" layer="1"/>
 <wire x1="24.0183" y1="18.8113" x2="25.6693" y2="20.4623" width="0.4064" layer="1"/>
 <wire x1="25.6693" y1="20.4623" x2="25.6693" y2="31.8923" width="0.4064" layer="1"/>
-<wire x1="24.2723" y1="38.6233" x2="23.3833" y2="38.6233" width="0.4064" layer="1"/>
-<wire x1="24.9073" y1="37.9883" x2="24.2723" y2="38.6233" width="0.4064" layer="1"/>
 <wire x1="25.6693" y1="31.8923" x2="24.9073" y2="32.6543" width="0.4064" layer="1"/>
-<wire x1="23.3833" y1="38.6233" x2="23.3833" y2="42.6873" width="0.4064" layer="1"/>
-<wire x1="23.3833" y1="42.6873" x2="23.5103" y2="42.8143" width="0.4064" layer="1"/>
-<wire x1="24.9073" y1="32.6543" x2="24.9073" y2="37.9883" width="0.4064" layer="1"/>
-<wire x1="23.2563" y1="42.6873" x2="23.3756" y2="42.6873" width="0.4064" layer="1"/>
 <wire x1="23.3756" y1="45.05451875" x2="23.3756" y2="45.3293" width="0.4064" layer="1"/>
-<wire x1="23.3756" y1="45.05451875" x2="23.3756" y2="42.6873" width="0.4064" layer="1"/>
 <wire x1="10.4103" y1="33.3909" x2="10.4103" y2="43.26011875" width="0.4064" layer="1"/>
 <wire x1="10.4103" y1="43.26011875" x2="12.435840625" y2="45.285659375" width="0.4064" layer="1"/>
 <wire x1="12.435840625" y1="45.285659375" x2="23.144459375" y2="45.285659375" width="0.4064" layer="1"/>
 <wire x1="23.144459375" y1="45.285659375" x2="23.3756" y2="45.05451875" width="0.4064" layer="1"/>
+<wire x1="23.3833" y1="45.04681875" x2="23.3756" y2="45.05451875" width="0.4064" layer="1"/>
+<wire x1="24.9073" y1="32.6543" x2="24.9073" y2="43.52281875" width="0.4064" layer="1"/>
+<wire x1="24.9073" y1="43.52281875" x2="23.3756" y2="45.05451875" width="0.4064" layer="1"/>
 </signal>
 <signal name="PB6">
 <contactref element="Q2" pad="P$2"/>
@@ -1068,7 +1058,7 @@ design rules under a new name.</description>
 <signal name="D10">
 <contactref element="U$1" pad="14"/>
 <contactref element="SG1" pad="+"/>
-<wire x1="12.0103" y1="24.8057" x2="6.847840625" y2="-50.154840625" width="0" layer="19" extent="1-1"/>
+<wire x1="12.0103" y1="24.8057" x2="7.19328125" y2="-20.894040625" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="MOSI-D11">
 <contactref element="U$1" pad="15"/>
