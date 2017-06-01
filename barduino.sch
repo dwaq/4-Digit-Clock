@@ -764,84 +764,6 @@ chip</description>
 </deviceset>
 </devicesets>
 </library>
-<library name="buzzer" urn="urn:adsk.eagle:library:113">
-<description>&lt;b&gt;Speakers and Buzzers&lt;/b&gt;&lt;p&gt;
-&lt;ul&gt;Distributors:
-&lt;li&gt;Buerklin
-&lt;li&gt;Spoerle
-&lt;li&gt;Schukat
-&lt;/ul&gt;
-&lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
-<packages>
-<package name="F/CM12P" library_version="1">
-<description>&lt;b&gt;BUZZER&lt;/b&gt;</description>
-<wire x1="3.175" y1="3.048" x2="4.445" y2="3.048" width="0.254" layer="21"/>
-<wire x1="3.81" y1="3.683" x2="3.81" y2="2.413" width="0.254" layer="21"/>
-<circle x="0" y="0" radius="6.985" width="0.1524" layer="21"/>
-<circle x="0" y="0" radius="1.27" width="0.1524" layer="21"/>
-<circle x="3.81" y="3.048" radius="1.27" width="0.1524" layer="21"/>
-<pad name="-" x="-3.81" y="0" drill="1.016" diameter="2.54" shape="octagon"/>
-<pad name="+" x="3.81" y="0" drill="1.016" diameter="2.54" shape="octagon"/>
-<text x="2.54" y="6.985" size="1.27" layer="25" ratio="10">&gt;NAME</text>
-<text x="-4.445" y="-3.81" size="1.27" layer="27" ratio="10">&gt;VALUE</text>
-</package>
-</packages>
-<symbols>
-<symbol name="B2P" library_version="1">
-<wire x1="-1.27" y1="3.175" x2="0" y2="3.175" width="0.1524" layer="94"/>
-<wire x1="0" y1="3.175" x2="0" y2="3.81" width="0.1524" layer="94"/>
-<wire x1="0" y1="3.175" x2="0" y2="2.54" width="0.1524" layer="94"/>
-<wire x1="0.635" y1="4.445" x2="0.635" y2="1.905" width="0.1524" layer="94"/>
-<wire x1="0.635" y1="1.905" x2="1.905" y2="1.905" width="0.1524" layer="94"/>
-<wire x1="1.905" y1="1.905" x2="1.905" y2="4.445" width="0.1524" layer="94"/>
-<wire x1="1.905" y1="4.445" x2="0.635" y2="4.445" width="0.1524" layer="94"/>
-<wire x1="2.54" y1="3.81" x2="2.54" y2="3.175" width="0.1524" layer="94"/>
-<wire x1="2.54" y1="3.175" x2="3.81" y2="3.175" width="0.1524" layer="94"/>
-<wire x1="2.54" y1="3.175" x2="2.54" y2="2.54" width="0.1524" layer="94"/>
-<wire x1="2.54" y1="-2.54" x2="2.54" y2="1.27" width="0.1524" layer="94"/>
-<wire x1="0" y1="-2.54" x2="0" y2="1.27" width="0.1524" layer="94"/>
-<wire x1="-2.54" y1="1.27" x2="0" y2="1.27" width="0.254" layer="94"/>
-<wire x1="5.08" y1="1.27" x2="5.08" y2="5.08" width="0.254" layer="94"/>
-<wire x1="5.08" y1="5.08" x2="5.715" y2="5.08" width="0.254" layer="94"/>
-<wire x1="5.715" y1="5.08" x2="5.715" y2="5.715" width="0.254" layer="94"/>
-<wire x1="5.715" y1="5.715" x2="-3.175" y2="5.715" width="0.254" layer="94"/>
-<wire x1="-3.175" y1="5.715" x2="-3.175" y2="5.08" width="0.254" layer="94"/>
-<wire x1="-3.175" y1="5.08" x2="-2.54" y2="5.08" width="0.254" layer="94"/>
-<wire x1="-2.54" y1="5.08" x2="-2.54" y2="1.27" width="0.254" layer="94"/>
-<wire x1="-2.54" y1="5.08" x2="5.08" y2="5.08" width="0.254" layer="94"/>
-<wire x1="2.54" y1="1.27" x2="5.08" y2="1.27" width="0.254" layer="94"/>
-<wire x1="0" y1="1.27" x2="2.54" y2="1.27" width="0.254" layer="94"/>
-<text x="-2.54" y="6.35" size="1.778" layer="95">&gt;NAME</text>
-<text x="6.35" y="0" size="1.778" layer="96">&gt;VALUE</text>
-<pin name="2" x="5.08" y="-2.54" visible="pad" length="short" direction="pas" rot="R180"/>
-<pin name="1" x="-2.54" y="-2.54" visible="pad" length="short" direction="pas"/>
-</symbol>
-</symbols>
-<devicesets>
-<deviceset name="F/CM12P" prefix="SG" library_version="1">
-<description>&lt;b&gt;BUZZER&lt;/b&gt;&lt;p&gt; Source: Buerklin</description>
-<gates>
-<gate name="G$1" symbol="B2P" x="0" y="0"/>
-</gates>
-<devices>
-<device name="" package="F/CM12P">
-<connects>
-<connect gate="G$1" pin="1" pad="+"/>
-<connect gate="G$1" pin="2" pad="-"/>
-</connects>
-<technologies>
-<technology name="">
-<attribute name="MF" value="" constant="no"/>
-<attribute name="MPN" value="" constant="no"/>
-<attribute name="OC_FARNELL" value="unknown" constant="no"/>
-<attribute name="OC_NEWARK" value="unknown" constant="no"/>
-</technology>
-</technologies>
-</device>
-</devices>
-</deviceset>
-</devicesets>
-</library>
 <library name="4-Digit-Clock">
 <packages>
 <package name="HEADER">
@@ -857,6 +779,10 @@ chip</description>
 <wire x1="-7.8232" y1="1.27" x2="-7.8232" y2="-1.27" width="0.127" layer="51"/>
 <text x="-13.97" y="0" size="1.27" layer="25">&gt;NAME</text>
 <text x="8.89" y="0" size="1.27" layer="27">&gt;VALUE</text>
+</package>
+<package name="BUZZER">
+<smd name="P$1" x="-1.27" y="0" dx="3.81" dy="1.27" layer="1" rot="R90"/>
+<smd name="P$2" x="1.27" y="0" dx="3.81" dy="1.27" layer="1" rot="R90"/>
 </package>
 </packages>
 <symbols>
@@ -874,6 +800,14 @@ chip</description>
 <text x="-15.24" y="2.54" size="1.778" layer="95">&gt;NAME</text>
 <text x="7.62" y="2.54" size="1.778" layer="96">&gt;VALUE</text>
 </symbol>
+<symbol name="BUZZER">
+<wire x1="-5.08" y1="2.54" x2="5.08" y2="2.54" width="0.254" layer="94"/>
+<wire x1="5.08" y1="2.54" x2="5.08" y2="-2.54" width="0.254" layer="94"/>
+<wire x1="5.08" y1="-2.54" x2="-5.08" y2="-2.54" width="0.254" layer="94"/>
+<wire x1="-5.08" y1="-2.54" x2="-5.08" y2="2.54" width="0.254" layer="94"/>
+<pin name="P$1" x="-2.54" y="-7.62" length="middle" rot="R90"/>
+<pin name="P$2" x="2.54" y="-7.62" length="middle" rot="R90"/>
+</symbol>
 </symbols>
 <devicesets>
 <deviceset name="HEADER">
@@ -889,6 +823,22 @@ chip</description>
 <connect gate="G$1" pin="P$4" pad="4"/>
 <connect gate="G$1" pin="P$5" pad="5"/>
 <connect gate="G$1" pin="P$6" pad="6"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="BUZZER">
+<gates>
+<gate name="G$1" symbol="BUZZER" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="BUZZER">
+<connects>
+<connect gate="G$1" pin="P$1" pad="P$1"/>
+<connect gate="G$1" pin="P$2" pad="P$2"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -1362,7 +1312,6 @@ Source: http://www.hirose.co.jp/cataloge_hp/e24000019.pdf</description>
 <part name="U$1" library="fab" deviceset="ATMEGA88-THIN" device=""/>
 <part name="ICSP" library="fab" deviceset="PINHD-2X3-SMD" device="" value="PROG"/>
 <part name="GND2" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
-<part name="SG1" library="buzzer" library_urn="urn:adsk.eagle:library:113" deviceset="F/CM12P" device=""/>
 <part name="GND1" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="P+1" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VCC" device=""/>
 <part name="S1" library="ng" deviceset="6MM_SWITCH" device="6MM_SWITCH" value="MIN"/>
@@ -1374,6 +1323,7 @@ Source: http://www.hirose.co.jp/cataloge_hp/e24000019.pdf</description>
 <part name="GND7" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="GND3" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="X1" library="con-hirose" deviceset="MINI-USB-" device="UX60A-MB-5ST"/>
+<part name="U$4" library="4-Digit-Clock" deviceset="BUZZER" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -1429,8 +1379,7 @@ Header</text>
 <instance part="C7" gate="1" x="58.42" y="58.42" rot="R90"/>
 <instance part="U$1" gate="G$1" x="91.44" y="71.12"/>
 <instance part="ICSP" gate="A" x="88.9" y="116.84"/>
-<instance part="GND2" gate="1" x="6.35" y="15.24"/>
-<instance part="SG1" gate="G$1" x="-3.81" y="24.13"/>
+<instance part="GND2" gate="1" x="0" y="15.24"/>
 <instance part="GND1" gate="1" x="-13.97" y="85.09"/>
 <instance part="P+1" gate="VCC" x="64.77" y="121.92"/>
 <instance part="S1" gate="2" x="0" y="57.15" rot="R270"/>
@@ -1442,6 +1391,7 @@ Header</text>
 <instance part="GND7" gate="1" x="10.16" y="48.26"/>
 <instance part="GND3" gate="1" x="58.42" y="35.56"/>
 <instance part="X1" gate="G$1" x="-30.48" y="99.06" rot="MR0"/>
+<instance part="U$4" gate="G$1" x="-2.54" y="30.48"/>
 </instances>
 <busses>
 </busses>
@@ -1497,12 +1447,6 @@ Header</text>
 <pinref part="C5" gate="1" pin="1"/>
 </segment>
 <segment>
-<pinref part="SG1" gate="G$1" pin="2"/>
-<pinref part="GND2" gate="1" pin="GND"/>
-<wire x1="1.27" y1="21.59" x2="6.35" y2="21.59" width="0.1524" layer="91"/>
-<wire x1="6.35" y1="21.59" x2="6.35" y2="17.78" width="0.1524" layer="91"/>
-</segment>
-<segment>
 <pinref part="C2" gate="1" pin="1"/>
 <wire x1="-25.4" y1="93.98" x2="-13.97" y2="93.98" width="0.1524" layer="91"/>
 <wire x1="-13.97" y1="93.98" x2="-13.97" y2="95.25" width="0.1524" layer="91"/>
@@ -1545,6 +1489,11 @@ Header</text>
 <pinref part="C7" gate="1" pin="1"/>
 <wire x1="58.42" y1="45.72" x2="58.42" y2="53.34" width="0.1524" layer="91"/>
 <junction x="58.42" y="45.72"/>
+</segment>
+<segment>
+<pinref part="GND2" gate="1" pin="GND"/>
+<pinref part="U$4" gate="G$1" pin="P$2"/>
+<wire x1="0" y1="17.78" x2="0" y2="22.86" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="PB7" class="0">
@@ -1625,10 +1574,10 @@ Header</text>
 <pinref part="U$1" gate="G$1" pin="PD3(INT1)"/>
 </segment>
 <segment>
-<pinref part="SG1" gate="G$1" pin="1"/>
-<wire x1="-6.35" y1="21.59" x2="-12.7" y2="21.59" width="0.1524" layer="91"/>
-<wire x1="-12.7" y1="21.59" x2="-12.7" y2="22.86" width="0.1524" layer="91"/>
-<label x="-12.7" y="22.86" size="1.778" layer="95"/>
+<pinref part="U$4" gate="G$1" pin="P$1"/>
+<wire x1="-5.08" y1="22.86" x2="-5.08" y2="20.32" width="0.1524" layer="91"/>
+<wire x1="-5.08" y1="20.32" x2="-17.78" y2="20.32" width="0.1524" layer="91"/>
+<label x="-17.78" y="20.32" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="D4" class="0">
