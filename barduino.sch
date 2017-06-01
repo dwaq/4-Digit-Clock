@@ -842,14 +842,70 @@ chip</description>
 </deviceset>
 </devicesets>
 </library>
-<library name="con-hirose" urn="urn:adsk.eagle:library:152">
+<library name="4-Digit-Clock">
+<packages>
+<package name="HEADER">
+<smd name="1" x="-6.35" y="2.2225" dx="4.445" dy="1.016" layer="1" rot="R90"/>
+<smd name="2" x="-3.81" y="2.2225" dx="4.445" dy="1.016" layer="1" rot="R90"/>
+<smd name="3" x="-1.27" y="2.2225" dx="4.445" dy="1.016" layer="1" rot="R90"/>
+<smd name="4" x="1.27" y="2.2225" dx="4.445" dy="1.016" layer="1" rot="R90"/>
+<smd name="5" x="3.81" y="2.2225" dx="4.445" dy="1.016" layer="1" rot="R90"/>
+<smd name="6" x="6.35" y="2.2225" dx="4.445" dy="1.016" layer="1" rot="R90"/>
+<wire x1="-7.8232" y1="-1.27" x2="7.8232" y2="-1.27" width="0.127" layer="51"/>
+<wire x1="7.8232" y1="-1.27" x2="7.8232" y2="1.27" width="0.127" layer="51"/>
+<wire x1="7.8232" y1="1.27" x2="-7.8232" y2="1.27" width="0.127" layer="51"/>
+<wire x1="-7.8232" y1="1.27" x2="-7.8232" y2="-1.27" width="0.127" layer="51"/>
+<text x="-13.97" y="0" size="1.27" layer="25">&gt;NAME</text>
+<text x="8.89" y="0" size="1.27" layer="27">&gt;VALUE</text>
+</package>
+</packages>
+<symbols>
+<symbol name="HEADER">
+<wire x1="-15.24" y1="2.54" x2="15.24" y2="2.54" width="0.254" layer="94"/>
+<wire x1="15.24" y1="2.54" x2="15.24" y2="-5.08" width="0.254" layer="94"/>
+<wire x1="15.24" y1="-5.08" x2="-15.24" y2="-5.08" width="0.254" layer="94"/>
+<wire x1="-15.24" y1="-5.08" x2="-15.24" y2="2.54" width="0.254" layer="94"/>
+<pin name="P$1" x="-12.7" y="-10.16" length="middle" rot="R90"/>
+<pin name="P$2" x="-7.62" y="-10.16" length="middle" rot="R90"/>
+<pin name="P$3" x="-2.54" y="-10.16" length="middle" rot="R90"/>
+<pin name="P$4" x="2.54" y="-10.16" length="middle" rot="R90"/>
+<pin name="P$5" x="7.62" y="-10.16" length="middle" rot="R90"/>
+<pin name="P$6" x="12.7" y="-10.16" length="middle" rot="R90"/>
+<text x="-15.24" y="2.54" size="1.778" layer="95">&gt;NAME</text>
+<text x="7.62" y="2.54" size="1.778" layer="96">&gt;VALUE</text>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="HEADER">
+<gates>
+<gate name="G$1" symbol="HEADER" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="HEADER">
+<connects>
+<connect gate="G$1" pin="P$1" pad="1"/>
+<connect gate="G$1" pin="P$2" pad="2"/>
+<connect gate="G$1" pin="P$3" pad="3"/>
+<connect gate="G$1" pin="P$4" pad="4"/>
+<connect gate="G$1" pin="P$5" pad="5"/>
+<connect gate="G$1" pin="P$6" pad="6"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
+<library name="con-hirose">
 <description>&lt;b&gt;Hirose Connectors&lt;/b&gt;&lt;p&gt;
 www.hirose.co.jp&lt;p&gt;
 Include : &lt;br&gt;
 con-hirose-df12d(3.0)60dp0.5v80.lbr from Bob Starr &amp;lt;rtzaudio@mindspring.com&amp;gt;&lt;br&gt;
 con-hirose.lbr from Bob Starr &amp;lt;rtzaudio@mindspring.com&amp;gt;&lt;br&gt;</description>
 <packages>
-<package name="UX60A-MB-5ST" library_version="1">
+<package name="UX60A-MB-5ST">
 <description>&lt;b&gt;MINI USB Connector HI-SPEED Certified&lt;/b&gt; Metal Shield SMT Type Without Positioning Post&lt;p&gt;
 Source: http://www.hirose.co.jp/cataloge_hp/e24000019.pdf</description>
 <wire x1="-6.3509" y1="3.8059" x2="2.5511" y2="3.8059" width="0.1016" layer="21"/>
@@ -962,12 +1018,8 @@ Source: http://www.hirose.co.jp/cataloge_hp/e24000019.pdf</description>
 <rectangle x1="1.3034" y1="-0.1615" x2="2.6072" y2="0.1749" layer="51"/>
 <rectangle x1="1.3034" y1="-0.9606" x2="2.6072" y2="-0.6242" layer="51"/>
 <rectangle x1="1.3034" y1="-1.7596" x2="2.6072" y2="-1.4232" layer="51"/>
-<rectangle x1="-6.4" y1="-3.85" x2="-4.425" y2="3.85" layer="41"/>
-<rectangle x1="-2.175" y1="-3.85" x2="-0.45" y2="3.85" layer="41"/>
-<rectangle x1="-4.425" y1="-2.925" x2="-2.175" y2="2.925" layer="41"/>
-<rectangle x1="-0.45" y1="-1.85" x2="1.225" y2="1.85" layer="41"/>
 </package>
-<package name="UX60-MB-5S8" library_version="1">
+<package name="UX60-MB-5S8">
 <description>&lt;b&gt;MINI USB Connector HI-SPEED Certified&lt;/b&gt; Metal Shield Dip Type With Positioning Post&lt;p&gt;
 Source: http://www.hirose.co.jp/cataloge_hp/e24000019.pdf</description>
 <wire x1="0.0491" y1="3.8059" x2="8.9511" y2="3.8059" width="0.1016" layer="21"/>
@@ -1067,7 +1119,7 @@ Source: http://www.hirose.co.jp/cataloge_hp/e24000019.pdf</description>
 <hole x="6.4" y="-1.75" drill="0.9"/>
 <hole x="6.4" y="1.75" drill="0.9"/>
 </package>
-<package name="UX60-MB-5ST" library_version="1">
+<package name="UX60-MB-5ST">
 <description>&lt;b&gt;MINI USB Connector HI-SPEED Certified&lt;/b&gt; Metal Shield SMT Type With Positioning Post&lt;p&gt;
 Source: http://www.hirose.co.jp/cataloge_hp/e24000019.pdf</description>
 <wire x1="-6.3509" y1="3.8059" x2="2.5511" y2="3.8059" width="0.1016" layer="21"/>
@@ -1190,7 +1242,7 @@ Source: http://www.hirose.co.jp/cataloge_hp/e24000019.pdf</description>
 </package>
 </packages>
 <symbols>
-<symbol name="MINI-USB" library_version="1">
+<symbol name="MINI-USB">
 <wire x1="-2.54" y1="6.35" x2="-2.54" y2="-6.35" width="0.254" layer="94"/>
 <wire x1="-2.54" y1="-6.35" x2="-1.27" y2="-7.62" width="0.254" layer="94" curve="90"/>
 <wire x1="-1.27" y1="-7.62" x2="0" y2="-7.62" width="0.254" layer="94"/>
@@ -1221,7 +1273,7 @@ Source: http://www.hirose.co.jp/cataloge_hp/e24000019.pdf</description>
 </symbol>
 </symbols>
 <devicesets>
-<deviceset name="MINI-USB-" prefix="X" library_version="1">
+<deviceset name="MINI-USB-" prefix="X">
 <description>&lt;b&gt;MINI USB Connector&lt;/b&gt;&lt;p&gt;
 Source: http://www.hirose.co.jp/cataloge_hp/e24000019.pdf</description>
 <gates>
@@ -1283,62 +1335,6 @@ Source: http://www.hirose.co.jp/cataloge_hp/e24000019.pdf</description>
 </deviceset>
 </devicesets>
 </library>
-<library name="4-Digit-Clock">
-<packages>
-<package name="HEADER">
-<smd name="1" x="-6.35" y="2.2225" dx="4.445" dy="1.016" layer="1" rot="R90"/>
-<smd name="2" x="-3.81" y="2.2225" dx="4.445" dy="1.016" layer="1" rot="R90"/>
-<smd name="3" x="-1.27" y="2.2225" dx="4.445" dy="1.016" layer="1" rot="R90"/>
-<smd name="4" x="1.27" y="2.2225" dx="4.445" dy="1.016" layer="1" rot="R90"/>
-<smd name="5" x="3.81" y="2.2225" dx="4.445" dy="1.016" layer="1" rot="R90"/>
-<smd name="6" x="6.35" y="2.2225" dx="4.445" dy="1.016" layer="1" rot="R90"/>
-<wire x1="-7.8232" y1="-1.27" x2="7.8232" y2="-1.27" width="0.127" layer="51"/>
-<wire x1="7.8232" y1="-1.27" x2="7.8232" y2="1.27" width="0.127" layer="51"/>
-<wire x1="7.8232" y1="1.27" x2="-7.8232" y2="1.27" width="0.127" layer="51"/>
-<wire x1="-7.8232" y1="1.27" x2="-7.8232" y2="-1.27" width="0.127" layer="51"/>
-<text x="-13.97" y="0" size="1.27" layer="25">&gt;NAME</text>
-<text x="8.89" y="0" size="1.27" layer="27">&gt;VALUE</text>
-</package>
-</packages>
-<symbols>
-<symbol name="HEADER">
-<wire x1="-15.24" y1="2.54" x2="15.24" y2="2.54" width="0.254" layer="94"/>
-<wire x1="15.24" y1="2.54" x2="15.24" y2="-5.08" width="0.254" layer="94"/>
-<wire x1="15.24" y1="-5.08" x2="-15.24" y2="-5.08" width="0.254" layer="94"/>
-<wire x1="-15.24" y1="-5.08" x2="-15.24" y2="2.54" width="0.254" layer="94"/>
-<pin name="P$1" x="-12.7" y="-10.16" length="middle" rot="R90"/>
-<pin name="P$2" x="-7.62" y="-10.16" length="middle" rot="R90"/>
-<pin name="P$3" x="-2.54" y="-10.16" length="middle" rot="R90"/>
-<pin name="P$4" x="2.54" y="-10.16" length="middle" rot="R90"/>
-<pin name="P$5" x="7.62" y="-10.16" length="middle" rot="R90"/>
-<pin name="P$6" x="12.7" y="-10.16" length="middle" rot="R90"/>
-<text x="-15.24" y="2.54" size="1.778" layer="95">&gt;NAME</text>
-<text x="7.62" y="2.54" size="1.778" layer="96">&gt;VALUE</text>
-</symbol>
-</symbols>
-<devicesets>
-<deviceset name="HEADER">
-<gates>
-<gate name="G$1" symbol="HEADER" x="0" y="0"/>
-</gates>
-<devices>
-<device name="" package="HEADER">
-<connects>
-<connect gate="G$1" pin="P$1" pad="1"/>
-<connect gate="G$1" pin="P$2" pad="2"/>
-<connect gate="G$1" pin="P$3" pad="3"/>
-<connect gate="G$1" pin="P$4" pad="4"/>
-<connect gate="G$1" pin="P$5" pad="5"/>
-<connect gate="G$1" pin="P$6" pad="6"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-</devices>
-</deviceset>
-</devicesets>
-</library>
 </libraries>
 <attributes>
 </attributes>
@@ -1367,7 +1363,6 @@ Source: http://www.hirose.co.jp/cataloge_hp/e24000019.pdf</description>
 <part name="ICSP" library="fab" deviceset="PINHD-2X3-SMD" device="" value="PROG"/>
 <part name="GND2" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="SG1" library="buzzer" library_urn="urn:adsk.eagle:library:113" deviceset="F/CM12P" device=""/>
-<part name="X1" library="con-hirose" library_urn="urn:adsk.eagle:library:152" deviceset="MINI-USB-" device="UX60A-MB-5ST"/>
 <part name="GND1" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="P+1" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VCC" device=""/>
 <part name="S1" library="ng" deviceset="6MM_SWITCH" device="6MM_SWITCH" value="MIN"/>
@@ -1378,6 +1373,7 @@ Source: http://www.hirose.co.jp/cataloge_hp/e24000019.pdf</description>
 <part name="GND6" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="GND7" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="GND3" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
+<part name="X1" library="con-hirose" deviceset="MINI-USB-" device="UX60A-MB-5ST"/>
 </parts>
 <sheets>
 <sheet>
@@ -1435,7 +1431,6 @@ Header</text>
 <instance part="ICSP" gate="A" x="88.9" y="116.84"/>
 <instance part="GND2" gate="1" x="6.35" y="15.24"/>
 <instance part="SG1" gate="G$1" x="-3.81" y="24.13"/>
-<instance part="X1" gate="G$1" x="-30.48" y="99.06" rot="MR0"/>
 <instance part="GND1" gate="1" x="-13.97" y="85.09"/>
 <instance part="P+1" gate="VCC" x="64.77" y="121.92"/>
 <instance part="S1" gate="2" x="0" y="57.15" rot="R270"/>
@@ -1446,6 +1441,7 @@ Header</text>
 <instance part="GND6" gate="1" x="-22.86" y="48.26"/>
 <instance part="GND7" gate="1" x="10.16" y="48.26"/>
 <instance part="GND3" gate="1" x="58.42" y="35.56"/>
+<instance part="X1" gate="G$1" x="-30.48" y="99.06" rot="MR0"/>
 </instances>
 <busses>
 </busses>
@@ -1457,8 +1453,8 @@ Header</text>
 <pinref part="P+2" gate="VCC" pin="VCC"/>
 <wire x1="-13.97" y1="104.14" x2="-13.97" y2="102.87" width="0.1524" layer="91"/>
 <junction x="-13.97" y="104.14"/>
-<pinref part="X1" gate="G$1" pin="1"/>
 <wire x1="-25.4" y1="104.14" x2="-13.97" y2="104.14" width="0.1524" layer="91"/>
+<pinref part="X1" gate="G$1" pin="1"/>
 </segment>
 <segment>
 <pinref part="ICSP" gate="A" pin="2"/>
@@ -1507,13 +1503,13 @@ Header</text>
 <wire x1="6.35" y1="21.59" x2="6.35" y2="17.78" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="X1" gate="G$1" pin="5"/>
 <pinref part="C2" gate="1" pin="1"/>
 <wire x1="-25.4" y1="93.98" x2="-13.97" y2="93.98" width="0.1524" layer="91"/>
 <wire x1="-13.97" y1="93.98" x2="-13.97" y2="95.25" width="0.1524" layer="91"/>
 <pinref part="GND1" gate="1" pin="GND"/>
 <wire x1="-13.97" y1="87.63" x2="-13.97" y2="93.98" width="0.1524" layer="91"/>
 <junction x="-13.97" y="93.98"/>
+<pinref part="X1" gate="G$1" pin="5"/>
 </segment>
 <segment>
 <pinref part="ICSP" gate="A" pin="6"/>
