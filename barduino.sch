@@ -1365,7 +1365,6 @@ Source: http://www.hirose.co.jp/cataloge_hp/e24000019.pdf</description>
 <part name="C7" library="ng" deviceset="UNPOLARIZED_CAPACITOR" device="1206" value=".1uF"/>
 <part name="U$1" library="fab" deviceset="ATMEGA88-THIN" device=""/>
 <part name="ICSP" library="fab" deviceset="PINHD-2X3-SMD" device="" value="PROG"/>
-<part name="R2" library="ng" deviceset="RESISTOR" device="1206" value="0"/>
 <part name="GND2" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="SG1" library="buzzer" library_urn="urn:adsk.eagle:library:113" deviceset="F/CM12P" device=""/>
 <part name="X1" library="con-hirose" library_urn="urn:adsk.eagle:library:152" deviceset="MINI-USB-" device="UX60A-MB-5ST"/>
@@ -1383,23 +1382,22 @@ Source: http://www.hirose.co.jp/cataloge_hp/e24000019.pdf</description>
 <sheets>
 <sheet>
 <plain>
-<text x="-63.5" y="128.27" size="1.778" layer="97">Power</text>
+<text x="-40.64" y="128.27" size="1.778" layer="97">Power</text>
 <text x="-49.53" y="71.12" size="1.778" layer="97">Buttons</text>
 <text x="72.39" y="130.81" size="1.778" layer="97">Programming
 Header</text>
 <text x="76.2" y="20.32" size="5.08" layer="91">Barduino V1</text>
 <text x="76.2" y="15.24" size="2.54" layer="91">Arduino compatible / Fabian Based</text>
 <text x="76.2" y="10.16" size="2.54" layer="91">FabLab Approved</text>
-<text x="-36.83" y="109.22" size="1.778" layer="91">Cheat</text>
 <text x="-22.86" y="34.29" size="1.778" layer="97">Buzzer</text>
 <text x="-2.54" y="129.54" size="1.778" layer="97">DISPLAY</text>
 <wire x1="-5.08" y1="132.08" x2="-5.08" y2="78.74" width="0.1524" layer="97"/>
 <wire x1="-5.08" y1="78.74" x2="35.56" y2="78.74" width="0.1524" layer="97"/>
 <wire x1="35.56" y1="78.74" x2="35.56" y2="132.08" width="0.1524" layer="97"/>
 <wire x1="35.56" y1="132.08" x2="-5.08" y2="132.08" width="0.1524" layer="97"/>
-<wire x1="-7.62" y1="132.08" x2="-66.04" y2="132.08" width="0.1524" layer="97"/>
-<wire x1="-66.04" y1="132.08" x2="-66.04" y2="78.74" width="0.1524" layer="97"/>
-<wire x1="-66.04" y1="78.74" x2="-7.62" y2="78.74" width="0.1524" layer="97"/>
+<wire x1="-7.62" y1="132.08" x2="-45.72" y2="132.08" width="0.1524" layer="97"/>
+<wire x1="-45.72" y1="132.08" x2="-45.72" y2="78.74" width="0.1524" layer="97"/>
+<wire x1="-45.72" y1="78.74" x2="-7.62" y2="78.74" width="0.1524" layer="97"/>
 <wire x1="-7.62" y1="78.74" x2="-7.62" y2="132.08" width="0.1524" layer="97"/>
 <wire x1="-50.8" y1="73.66" x2="15.24" y2="73.66" width="0.1524" layer="97"/>
 <wire x1="15.24" y1="73.66" x2="15.24" y2="40.64" width="0.1524" layer="97"/>
@@ -1435,13 +1433,9 @@ Header</text>
 <instance part="C7" gate="1" x="58.42" y="58.42" rot="R90"/>
 <instance part="U$1" gate="G$1" x="91.44" y="71.12"/>
 <instance part="ICSP" gate="A" x="88.9" y="116.84"/>
-<instance part="R2" gate="G$1" x="-33.02" y="104.14" smashed="yes" rot="R180">
-<attribute name="NAME" x="-29.21" y="102.6414" size="1.778" layer="95" rot="R180"/>
-<attribute name="VALUE" x="-34.29" y="107.442" size="1.778" layer="96" rot="R180"/>
-</instance>
 <instance part="GND2" gate="1" x="6.35" y="15.24"/>
 <instance part="SG1" gate="G$1" x="-3.81" y="24.13"/>
-<instance part="X1" gate="G$1" x="-53.34" y="99.06" rot="MR0"/>
+<instance part="X1" gate="G$1" x="-30.48" y="99.06" rot="MR0"/>
 <instance part="GND1" gate="1" x="-13.97" y="85.09"/>
 <instance part="P+1" gate="VCC" x="64.77" y="121.92"/>
 <instance part="S1" gate="2" x="0" y="57.15" rot="R270"/>
@@ -1461,10 +1455,10 @@ Header</text>
 <wire x1="-13.97" y1="110.49" x2="-13.97" y2="104.14" width="0.1524" layer="91"/>
 <pinref part="C2" gate="1" pin="2"/>
 <pinref part="P+2" gate="VCC" pin="VCC"/>
-<pinref part="R2" gate="G$1" pin="1"/>
 <wire x1="-13.97" y1="104.14" x2="-13.97" y2="102.87" width="0.1524" layer="91"/>
-<wire x1="-27.94" y1="104.14" x2="-13.97" y2="104.14" width="0.1524" layer="91"/>
 <junction x="-13.97" y="104.14"/>
+<pinref part="X1" gate="G$1" pin="1"/>
+<wire x1="-25.4" y1="104.14" x2="-13.97" y2="104.14" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="ICSP" gate="A" pin="2"/>
@@ -1489,6 +1483,11 @@ Header</text>
 <wire x1="68.58" y1="91.44" x2="58.42" y2="91.44" width="0.1524" layer="91"/>
 <junction x="58.42" y="91.44"/>
 </segment>
+<segment>
+<wire x1="64.77" y1="115.57" x2="64.77" y2="119.38" width="0.1524" layer="91"/>
+<pinref part="R3" gate="G$1" pin="2"/>
+<pinref part="P+1" gate="VCC" pin="VCC"/>
+</segment>
 </net>
 <net name="GND" class="1">
 <segment>
@@ -1510,7 +1509,7 @@ Header</text>
 <segment>
 <pinref part="X1" gate="G$1" pin="5"/>
 <pinref part="C2" gate="1" pin="1"/>
-<wire x1="-48.26" y1="93.98" x2="-13.97" y2="93.98" width="0.1524" layer="91"/>
+<wire x1="-25.4" y1="93.98" x2="-13.97" y2="93.98" width="0.1524" layer="91"/>
 <wire x1="-13.97" y1="93.98" x2="-13.97" y2="95.25" width="0.1524" layer="91"/>
 <pinref part="GND1" gate="1" pin="GND"/>
 <wire x1="-13.97" y1="87.63" x2="-13.97" y2="93.98" width="0.1524" layer="91"/>
@@ -1818,18 +1817,6 @@ Header</text>
 <wire x1="-38.1" y1="57.15" x2="-43.18" y2="57.15" width="0.1524" layer="91"/>
 <wire x1="-43.18" y1="57.15" x2="-43.18" y2="58.42" width="0.1524" layer="91"/>
 <label x="-43.18" y="58.42" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="VUSB" class="1">
-<segment>
-<pinref part="R2" gate="G$1" pin="2"/>
-<pinref part="X1" gate="G$1" pin="1"/>
-<wire x1="-38.1" y1="104.14" x2="-48.26" y2="104.14" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<wire x1="64.77" y1="115.57" x2="64.77" y2="119.38" width="0.1524" layer="91"/>
-<pinref part="R3" gate="G$1" pin="2"/>
-<pinref part="P+1" gate="VCC" pin="VCC"/>
 </segment>
 </net>
 </nets>
