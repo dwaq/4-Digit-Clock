@@ -448,8 +448,18 @@ Layer=91
 Views=" 1: -131.047 -37.3912 172.243 147.326"
 Sheet="1"
 
+[Win_4]
+Type="Text Editor"
+Loc="-8 -30 491 469"
+State=2
+Number=3
+File="barduino.sch.rpt"
+CursorPos="0 0"
+Font="Courier,11,-1,5,50,0,0,0,0,0"
+
 [Desktop]
 Screen="3200 1080"
 Window="Win_1"
 Window="Win_2"
 Window="Win_3"
+Window="Win_4"
