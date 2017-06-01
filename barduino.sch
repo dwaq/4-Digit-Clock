@@ -1463,13 +1463,6 @@ Source: http://www.hirose.co.jp/cataloge_hp/e24000019.pdf</description>
 <wire x1="-30.48" y1="104.14" x2="-13.97" y2="104.14" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="R7" gate="G$1" pin="1"/>
-<wire x1="104.14" y1="114.3" x2="107.95" y2="114.3" width="0.1524" layer="91"/>
-<wire x1="107.95" y1="114.3" x2="107.95" y2="124.46" width="0.1524" layer="91"/>
-<pinref part="R7" gate="G$1" pin="2"/>
-<wire x1="107.95" y1="124.46" x2="104.14" y2="124.46" width="0.1524" layer="91"/>
-</segment>
-<segment>
 <pinref part="ICSP" gate="A" pin="2"/>
 <wire x1="48.26" y1="22.86" x2="58.42" y2="22.86" width="0.1524" layer="91"/>
 <wire x1="58.42" y1="22.86" x2="58.42" y2="31.75" width="0.1524" layer="91"/>
@@ -1797,13 +1790,6 @@ Source: http://www.hirose.co.jp/cataloge_hp/e24000019.pdf</description>
 <label x="25.4" y="20.32" size="1.778" layer="95"/>
 <pinref part="ICSP" gate="A" pin="3"/>
 </segment>
-<segment>
-<pinref part="R2" gate="G$1" pin="1"/>
-<wire x1="81.28" y1="114.3" x2="85.09" y2="114.3" width="0.1524" layer="91"/>
-<wire x1="85.09" y1="114.3" x2="85.09" y2="124.46" width="0.1524" layer="91"/>
-<pinref part="R2" gate="G$1" pin="2"/>
-<wire x1="85.09" y1="124.46" x2="81.28" y2="124.46" width="0.1524" layer="91"/>
-</segment>
 </net>
 <net name="N$8" class="0">
 <segment>
@@ -1856,15 +1842,6 @@ Source: http://www.hirose.co.jp/cataloge_hp/e24000019.pdf</description>
 <wire x1="-25.4" y1="38.1" x2="21.59" y2="38.1" width="0.1524" layer="91"/>
 <wire x1="21.59" y1="38.1" x2="21.59" y2="8.89" width="0.1524" layer="91"/>
 <wire x1="21.59" y1="8.89" x2="-25.4" y2="8.89" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$3" class="0">
-<segment>
-<pinref part="R6" gate="G$1" pin="1"/>
-<pinref part="R6" gate="G$1" pin="2"/>
-<wire x1="92.71" y1="124.46" x2="96.52" y2="124.46" width="0.1524" layer="91"/>
-<wire x1="96.52" y1="124.46" x2="96.52" y2="114.3" width="0.1524" layer="91"/>
-<wire x1="96.52" y1="114.3" x2="92.71" y2="114.3" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$1" class="0">
