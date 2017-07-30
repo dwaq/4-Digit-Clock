@@ -4715,7 +4715,7 @@ Source: http://www.murata.com .. GRM43DR72E224KW01.pdf</description>
 <part name="Q2" library="ng" deviceset="CRYSTAL" device="CS10" value="16MHz"/>
 <part name="C4" library="ng" deviceset="UNPOLARIZED_CAPACITOR" device="1206" value="18pF"/>
 <part name="C5" library="ng" deviceset="UNPOLARIZED_CAPACITOR" device="1206" value="18pF"/>
-<part name="R5" library="ng" deviceset="RESISTOR" device="1206" value="1K"/>
+<part name="R5" library="ng" deviceset="RESISTOR" device="1206" value="10K"/>
 <part name="P+2" library="supply1" deviceset="VCC" device=""/>
 <part name="S0" library="ng" deviceset="6MM_SWITCH" device="6MM_SWITCH" value="HR"/>
 <part name="C2" library="ng" deviceset="UNPOLARIZED_CAPACITOR" device="1206" value="10uF"/>
