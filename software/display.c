@@ -49,7 +49,7 @@ void segment(int number)
       // A B C D F G
 
       break;
-    default:
+    //default:
       // bad - should't be here
   }
 }
