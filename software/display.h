@@ -21,6 +21,9 @@
 // 3  8  D6   PD6
 // 4  6  D2   PD2
 
-int foo(int x);  /* An example function declaration */
+// time(1234);
+void display(int dig1, int dig2, int dig3, int dig4);
+void digit(int digit, int segment);
+void segment(int number);
 
 #endif // DISPLAY_H_
