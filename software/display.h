@@ -1,6 +1,8 @@
 #ifndef DISPLAY_H_
 #define DISPLAY_H_
 
+#include <avr/io.h>
+
 // pinouts for common cathode 7 segment LED display:
 
 // segment is active high
