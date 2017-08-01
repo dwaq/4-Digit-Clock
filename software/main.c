@@ -9,11 +9,12 @@ int main(void)
   // set pins to outputs
   displaySetup();
 
+  // can't use this blocking method
+  //_delay_ms(1000);  //Delay for 1000ms => 1 sec
+
   while(1)
   {
-    PORTB |= (1<<PORTB5);    //Turn 6th bit on PORTB (i.e. PB5) to 1 => on
-    _delay_ms(1000);        //Delay for 1000ms => 1 sec
-    PORTB &= ~(1<<PORTB5);    //Turn 6th bit on PORTB (i.e. PB5) to 0 => off
-    _delay_ms(1000);        //Delay for 1000ms => 1 sec
+    // display all segments in loop so they keep updating
+    display(8,8,8,8);
   }
 }
