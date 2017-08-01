@@ -10,33 +10,43 @@ void segment(int number)
 {
   switch(number) {
     case 0:
+      // A B C D E F
 
       break;
     case 1:
+      // B C
 
       break;
     case 2:
+    // A B D E G
 
       break;
     case 3:
+      // A B D E G
 
       break;
     case 4:
+      // B C F G
 
       break;
     case 5:
+      // A C D F G
 
       break;
     case 6:
+      // A C D E F G
 
       break;
     case 7:
+      // A B C
 
       break;
     case 8:
+      // A B C D E F G
 
       break;
     case 9:
+      // A B C D F G
 
       break;
     default:
