@@ -10,9 +10,9 @@ void digit(int digit, int segment);
 void segment(int number)
 {
   // first, reset all segments
-  PORTB |= (1<<PORTB1 | 1<<PORTB0); // A F
-  PORTC |= (1<<PORTC3 | 1<<PORTC2); // D E
-  PORTD |= (1<<PORTD5 | 1<<PORTD0 | 1<<PORTD1); // B C G
+  PORTB &= ~(1<<PORTB1 | 1<<PORTB0); // A F
+  PORTC &= ~(1<<PORTC3 | 1<<PORTC2); // D E
+  PORTD &= ~(1<<PORTD5 | 1<<PORTD0 | 1<<PORTD1); // B C G
 
   // then set the coorespoding segments
   switch(number) {
