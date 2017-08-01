@@ -6,11 +6,19 @@ void digit(int digit, int segment);
 // display a number using the 7 segments
 // number must be between 0-9
 // TODO: add range checks
+// TODO: should we ever use the decimal point?
 void segment(int number)
 {
+  // first, reset all segments
+  PORTB |= (1<<PORTB1 | 1<<PORTB0); // A F
+  PORTC |= (1<<PORTC3 | 1<<PORTC2); // D E
+  PORTD |= (1<<PORTD5 | 1<<PORTD0 | 1<<PORTD1); // B C G
+
+  // then set the coorespoding segments
   switch(number) {
     case 0:
       // A B C D E F
+
 
       break;
     case 1:
@@ -43,7 +51,9 @@ void segment(int number)
       break;
     case 8:
       // A B C D E F G
-
+      PORTB |= (1<<PORTB1 | 1<<PORTB0); // A F
+      PORTC |= (1<<PORTC3 | 1<<PORTC2); // D E
+      PORTD |= (1<<PORTD5 | 1<<PORTD0 | 1<<PORTD1); // B C G
       break;
     case 9:
       // A B C D F G
