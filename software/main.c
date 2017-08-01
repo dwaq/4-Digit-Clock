@@ -6,9 +6,6 @@
 
 int main(void)
 {
-
-  int y = foo(3);  /* Use the function here */
-
   DDRB |= (1<<DDB5); //Set the 6th bit on PORTB (i.e. PB5) to 1 => output
   while(1)
   {
