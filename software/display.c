@@ -1,6 +1,13 @@
 #include "display.h"
 
-void display(int dig1, int dig2, int dig3, int dig4);
+// cycle through and display each digit
+void display(int dig1, int dig2, int dig3, int dig4)
+{
+  digit(1, dig1);
+  digit(2, dig2);
+  digit(3, dig3);
+  digit(4, dig4);
+}
 
 // display a number on the selected digit 1, 2, 3, or 4
 // TODO: add range checks
@@ -16,7 +23,8 @@ void digit(int digit, int number)
   segment(number);
 
   // then turn on specfic digit
-  switch(digit) {
+  switch(digit)
+  {
     case 1:
       PORTB |= (1<<PORTB2); // 1
       break;
@@ -46,7 +54,8 @@ void segment(int number)
   PORTD &= ~(1<<PORTD5 | 1<<PORTD0 | 1<<PORTD1); // B C G
 
   // then set the coorespoding segments
-  switch(number) {
+  switch(number)
+  {
     case 0:
       // A B C D E F
       PORTB |= (1<<PORTB1 | 1<<PORTB0); // A F
