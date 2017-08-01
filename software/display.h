@@ -18,14 +18,14 @@
 
 // digit is active low
 // digit | display | header | mcu
-// 1  12 D10  PB2
-// 2  9  D7   PD7
-// 3  8  D6   PD6
-// 4  6  D2   PD2
+// 1  12 D10 PB2
+// 2  9  D7  PD7
+// 3  8  D6  PD6
+// 4  6  D2  PD2
 
 // time(1234);
 void display(int dig1, int dig2, int dig3, int dig4);
-void digit(int digit, int segment);
+void digit(int digit, int number);
 void segment(int number);
 
 #endif // DISPLAY_H_

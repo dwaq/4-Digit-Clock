@@ -1,7 +1,38 @@
 #include "display.h"
 
 void display(int dig1, int dig2, int dig3, int dig4);
-void digit(int digit, int segment);
+
+// display a number on the selected digit 1, 2, 3, or 4
+// TODO: add range checks
+void digit(int digit, int number)
+{
+  // turn all digits off
+  PORTB &= ~(1<<PORTB2); // 1
+  PORTD &= ~(1<<PORTD7 | 1<<PORTD6 | 1<<PORTD2); // 2 3 4
+
+  // set up segments while digits off,
+  // so that the full digit comes up simultanously
+  // (although who is going to be able to detect a couple clk cycles?)
+  segment(number);
+
+  // then turn on specfic digit
+  switch(digit) {
+    case 1:
+      PORTB |= (1<<PORTB2); // 1
+      break;
+    case 2:
+      PORTD |= (1<<PORTD7); // 2
+      break;
+    case 3:
+      PORTD |= (1<<PORTD6); // 3
+      break;
+    case 4:
+      PORTD |= (1<<PORTD2); // 4
+      break;
+    //default:
+      // bad - should't be here
+  }
+}
 
 // display a number using the 7 segments
 // number must be between 0-9
