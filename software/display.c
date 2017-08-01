@@ -1,5 +1,13 @@
 #include "display.h"
 
+// set display pins to outputs
+void displaySetup()
+{
+  DDRB |= (1<<DDB1 | 1<<DDB0 | 1<<DDB2); // A F 1
+  DDRC |= (1<<DDC3 | 1<<DDC2 | 1<<DDC4); // D E DP
+  DDRD |= (1<<DDD5 | 1<<DDD0 | 1<<DDD5 | 1<<DDD7 | 1<<DDD6 | 1<<DDD2); // B C G 2 3 4
+}
+
 // cycle through and display each digit
 void display(int dig1, int dig2, int dig3, int dig4)
 {

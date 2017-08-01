@@ -6,7 +6,9 @@
 
 int main(void)
 {
-  DDRB |= (1<<DDB5); //Set the 6th bit on PORTB (i.e. PB5) to 1 => output
+  // set pins to outputs
+  displaySetup();
+
   while(1)
   {
     PORTB |= (1<<PORTB5);    //Turn 6th bit on PORTB (i.e. PB5) to 1 => on
