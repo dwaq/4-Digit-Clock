@@ -1,3 +1,14 @@
 *.s$*
 *.b$*
 *.l$*
+
+# compiled files
+*.dep
+*.eep
+*.elf
+*.hex
+*.lss
+*.lst
+*.map
+*.o
+*.sym
