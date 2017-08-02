@@ -4,6 +4,8 @@
 
 # compiled files
 *.dep
+default
+*.aps
 *.eep
 *.elf
 *.hex
