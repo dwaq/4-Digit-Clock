@@ -25,7 +25,7 @@
 
 void displaySetup();
 // time(1234);
-void display(int dig1, int dig2, int dig3, int dig4);
+void display(int dig1, int dig2, int dp, int dig3, int dig4);
 void digit(int digit, int number);
 void segment(int number);
 
