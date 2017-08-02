@@ -6,6 +6,7 @@
 *.dep
 default
 *.aps
+*.aws
 *.eep
 *.elf
 *.hex
