@@ -10,6 +10,9 @@ void displaySetup()
 
 // cycle through and display each digit
 // dp is for decimal point: 0 for off; 1 for on
+// TODO: make dp a bool?
+// TODO: put dp last so it doesn't affect dig2's brightness?
+// TODO: control dp inside digit() or segment()?
 void display(int dig1, int dig2, int dp, int dig3, int dig4)
 {
   digit(1, dig1);
@@ -32,7 +35,7 @@ void display(int dig1, int dig2, int dp, int dig3, int dig4)
   }
   digit(3, dig3);
   digit(4, dig4);
- 
+
 }
 
 // display a number on the selected digit 1, 2, 3, or 4
