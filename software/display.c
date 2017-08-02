@@ -81,10 +81,10 @@ void segment(int number)
       PORTD |= (1<<PORTD5 | 1<<PORTD1); // B G
       break;
     case 3:
-      // A B D E G
+      // A B C D G
       PORTB |= (1<<PORTB1); // A
-      PORTC |= (1<<PORTC3 | 1<<PORTC2); // D E
-      PORTD |= (1<<PORTD5 | 1<<PORTD1); // B G
+      PORTC |= (1<<PORTC3); // D E
+      PORTD |= (1<<PORTD5 | 1<<PORTD0 | 1<<PORTD1); // B C G
       break;
     case 4:
       // B C F G
