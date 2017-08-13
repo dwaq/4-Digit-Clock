@@ -17,7 +17,9 @@ void display(int dig1, int dig2, int dp, int dig3, int dig4)
 {
   digit(1, dig1);
   digit(2, dig2);
-   // display decimal point
+  digit(3, dig3);
+  digit(4, dig4);
+  // display decimal point
   if (dp)
   {
 	// set 2  9  D7  PD7 low
@@ -33,9 +35,6 @@ void display(int dig1, int dig2, int dp, int dig3, int dig4)
 	// set DP 3  A4  PC4 low
 	PORTC &= ~(1<<PORTC4);
   }
-  digit(3, dig3);
-  digit(4, dig4);
-
 }
 
 // display a number on the selected digit 1, 2, 3, or 4
