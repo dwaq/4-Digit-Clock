@@ -1,47 +1,50 @@
-#define F_CPU 16000000UL
 #include <avr/io.h>
-#include <util/delay.h>
+#include <avr/interrupt.h>
 
 #include "display.h"
 
 int count = 0;
 int d = 0;
+int dp = 0;
 
 int main(void)
 {
   // set pins to outputs
   displaySetup();
 
-  // can't use this blocking method
-  //_delay_ms(1000);  //Delay for 1000ms => 1 sec
+  // this code sets up timer1 for a 1s  @ 16Mhz Clock (mode 4)
+  OCR1A = 0x3D08;
+
+  // Mode 4, CTC on OCR1A
+  TCCR1B |= (1 << WGM12);
+
+  //Set interrupt on compare match
+  TIMSK1 |= (1 << OCIE1A);  
+
+  // set prescaler to 1024 and start the timer
+  TCCR1B |= (1 << CS12) | (1 << CS10);
+
+  // enable interrupts
+  sei();
 
   while(1)
   {
   	// display all segments in loop so they keep updating
-  	while (count < 25000)
-  	{
-      // half the time the dp is on
-  		if (count < 12500)
-  		{
-  			// decimal point
-  			display(d,d,1,d,d);
-  		}
-      // half the time it's off
-  		else
-  		{
-  			// no decimal point
-  			display(d,d,0,d,d);
-  		}
-  		count++;
-  	}
-  	count = 0;
+ 	display(d,d,dp,d,d);
+  }
+}
 
-    // go to the next digit
+// action to be done every 1 sec
+ISR (TIMER1_COMPA_vect)
+{
+	// go to the next digit
   	d++;
     // can't display past 9
   	if (d == 10)
   	{
   		d=0;
   	}
-  }
+
+	// flip decimal point
+	dp ^= 1;
 }
