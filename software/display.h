@@ -3,6 +3,10 @@
 
 #include <avr/io.h>
 
+// special parameters to handle decimal point
+#define DP_ON 10
+#define DP_OFF 11
+
 // pinouts for common cathode 7 segment LED display:
 
 // segment is active high

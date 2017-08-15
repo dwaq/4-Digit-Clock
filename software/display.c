@@ -12,29 +12,23 @@ void displaySetup()
 // dp is for decimal point: 0 for off; 1 for on
 // TODO: make dp a bool?
 // TODO: put dp last so it doesn't affect dig2's brightness?
-// TODO: control dp inside digit() or segment()?
 void display(int dig1, int dig2, int dp, int dig3, int dig4)
 {
   digit(1, dig1);
   digit(2, dig2);
   digit(3, dig3);
   digit(4, dig4);
-  // display decimal point
   if (dp)
   {
-	// set 2  9  D7  PD7 low
-	PORTD &= ~(1<<PORTD7);
-	// set DP 3  A4  PC4 high
-	PORTC |= (1<<PORTC4);
+  	// display decimal point (special parameter)
+  	digit(2, DP_ON);
   }
-  // don't display decimal point
   else
   {
-	// set 2  9  D7  PD7 high
-	PORTD |= (1<<PORTD7);
-	// set DP 3  A4  PC4 low
-	PORTC &= ~(1<<PORTC4);
+  	// dont't display decimal point (special parameter)
+  	digit(2, DP_OFF);
   }
+
 }
 
 // display a number on the selected digit 1, 2, 3, or 4
@@ -56,6 +50,7 @@ void digit(int digit, int number)
     case 1:
       PORTB &= ~(1<<PORTB2); // 1
       break;
+    // this case also handles decimal point
     case 2:
       PORTD &= ~(1<<PORTD7); // 2
       break;
@@ -64,7 +59,7 @@ void digit(int digit, int number)
       break;
     case 4:
       PORTD &= ~(1<<PORTD2); // 4
-      break;
+      break;	
     //default:
       // bad - should't be here
   }
@@ -73,12 +68,11 @@ void digit(int digit, int number)
 // display a number using the 7 segments
 // number must be between 0-9
 // TODO: add range checks
-// TODO: should we ever use the decimal point?
 void segment(int number)
 {
   // first, reset all segments
   PORTB &= ~(1<<PORTB1 | 1<<PORTB0); // A F
-  PORTC &= ~(1<<PORTC3 | 1<<PORTC2); // D E
+  PORTC &= ~(1<<PORTC4 | 1<<PORTC3 | 1<<PORTC2); // DP D E
   PORTD &= ~(1<<PORTD5 | 1<<PORTD0 | 1<<PORTD1); // B C G
 
   // then set the coorespoding segments
@@ -140,7 +134,13 @@ void segment(int number)
       PORTC |= (1<<PORTC3); // D
       PORTD |= (1<<PORTD5 | 1<<PORTD0 | 1<<PORTD1); // B C G
       break;
+    case 10:
+	  // DP
+	  PORTC |= (1<<PORTC4);
+	  break;
     //default:
+	  // case 11 falls through here
+	  // just turns off the decimal point by initial "reset all segments" code
       // bad - should't be here
   }
 }
