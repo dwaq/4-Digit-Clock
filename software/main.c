@@ -8,8 +8,7 @@
 int sec = 0;
 int min_1 = 0;
 int min_10 = 0;
-int hr_1 = 2;
-int hr_10 = 1;
+int hr = 12;
 
 // decimal point
 int dp = 0;
@@ -38,7 +37,7 @@ int main(void)
   while(1)
   {
   	// display all segments in loop so they keep updating
- 	display(hr_10, hr_1, dp, min_10, min_1);
+ 	display(hr/10, hr%10, dp, min_10, min_1);
   }
 }
 
@@ -47,10 +46,10 @@ ISR (TIMER1_COMPA_vect)
 {
 	//keep track of time
 	// using 2 instead of 60 to make it faster
-	/*
 	if (++sec==2)        
 	{
 		sec=0;
+		// minutes
 		if (++min_1==10)
 		{
 			min_1=0;
@@ -59,8 +58,12 @@ ISR (TIMER1_COMPA_vect)
 				min_10=0;
 			}
 		}
+		// hours
+		if (++hr==13)
+		{
+			hr=0;
+		}
 	}
-	*/
 
 	// flip decimal point every second
 	dp ^= 1;
