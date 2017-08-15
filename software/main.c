@@ -61,7 +61,7 @@ ISR (TIMER1_COMPA_vect)
 		// hours
 		if (++hr==13)
 		{
-			hr=0;
+			hr=1;
 		}
 	}
 
