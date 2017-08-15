@@ -56,6 +56,7 @@ ISR (TIMER1_COMPA_vect)
 			if (++min_10==6)
 			{
 				min_10=0;
+				// TODO: hours code should actually be here...
 			}
 		}
 		// hours
