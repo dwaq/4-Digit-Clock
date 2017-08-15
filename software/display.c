@@ -42,8 +42,8 @@ void display(int dig1, int dig2, int dp, int dig3, int dig4)
 void digit(int digit, int number)
 {
   // turn all digits off
-  PORTB &= ~(1<<PORTB2); // 1
-  PORTD &= ~(1<<PORTD7 | 1<<PORTD6 | 1<<PORTD2); // 2 3 4
+  PORTB |= (1<<PORTB2); // 1
+  PORTD |= (1<<PORTD7 | 1<<PORTD6 | 1<<PORTD2); // 2 3 4
 
   // set up segments while digits off,
   // so that the full digit comes up simultanously
@@ -54,16 +54,16 @@ void digit(int digit, int number)
   switch(digit)
   {
     case 1:
-      PORTB |= (1<<PORTB2); // 1
+      PORTB &= ~(1<<PORTB2); // 1
       break;
     case 2:
-      PORTD |= (1<<PORTD7); // 2
+      PORTD &= ~(1<<PORTD7); // 2
       break;
     case 3:
-      PORTD |= (1<<PORTD6); // 3
+      PORTD &= ~(1<<PORTD6); // 3
       break;
     case 4:
-      PORTD |= (1<<PORTD2); // 4
+      PORTD &= ~(1<<PORTD2); // 4
       break;
     //default:
       // bad - should't be here
