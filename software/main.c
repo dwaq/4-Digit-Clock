@@ -4,8 +4,7 @@
 #include "main.h"
 #include "display.h"
 
-// http://www.microchip.com//wwwAppNotes/AppNotes.aspx?appnote=en591232
-
+// displaying time
 int sec = 0;
 int min_1 = 0;
 int min_10 = 0;
