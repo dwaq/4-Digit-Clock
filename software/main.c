@@ -18,11 +18,17 @@ int hr_display = 1;
 
 int main(void)
 {
-  // set pins to outputs
+  // set display pins to outputs
   displaySetup();
+
+  // set button pins to interrupt-enabled inputs
+  buttonsSetup();
 
   // setup timer for 1 second tick
   timer1Setup();
+
+  // enable interrupts (for both buttons and timer1)
+  sei();
 
   while(1)
   {
@@ -38,9 +44,26 @@ int main(void)
   }
 }
 
+// S1 Hr  left  A0  PC0 PCINT8
+// S2 Min right A1  PC1 PCINT9
+buttonsSetup(void)
+{
+  // clear the pins (set them to input)
+  DDRC &= ~(1 << DDC1 | 1 << DDC0);
+
+  // turn on the internal pull-up resistors
+  PORTC |= (1 << PORTC1 | 1 << PORTC0);
+
+  // any change on any enabled PCINT[14:8] pin will cause an interrupt
+  PCICR |= (1 << PCIE1);
+
+  // pin change interrupt is enabled on the corresponding I/O pin
+  PCMSK1 |= (1 << PCINT9 | 1 << PCINT8);
+}
+
 // this code sets up timer1 for a 1s  @ 16Mhz Clock (mode 4)
 // https://sites.google.com/site/qeewiki/books/avr-guide/timers-on-the-atmega328
-void timer1Setup(void)
+timer1Setup(void)
 {
   // Mode 4, CTC on OCR1A
   OCR1A = 0x3D08;
@@ -51,9 +74,6 @@ void timer1Setup(void)
 
   // set prescaler to 1024 and start the timer
   TCCR1B |= (1 << CS12) | (1 << CS10);
-
-  // enable interrupts
-  sei();
 }
 
 // action to be done every 1 sec
