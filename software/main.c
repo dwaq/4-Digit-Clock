@@ -21,6 +21,8 @@ int hr_display = 1;
 
 // default to display mode
 Settings_TypeDef settings_mode = DISPLAY;
+// state of alarm
+int alarm_state = 0;
 
 int main(void)
 {
@@ -50,6 +52,25 @@ int main(void)
     {
       display(min_10, min_1, dp, sec/10, sec%10);
     }
+  }
+}
+
+// correctly move through settings states
+void nextSettingState(void)
+{
+  // if you've turned alarm off, go back to display
+  if ((settings_mode == SET_ALARM) & (alarm_state == 0))
+  {
+    settings_mode = DISPLAY;
+  }
+  // last setting, go back to display
+  else if (settings_mode == SET_ALARM_MIN)
+  {
+    settings_mode = DISPLAY;
+  }
+  // else just go to next state
+  else{
+    settings_mode++;
   }
 }
 
@@ -84,7 +105,8 @@ ISR (PCINT0_vect)
       // falling edge (pressed)
       if((PINC & (1 << PINC0)) == 0)
       {
-        // go to settings
+        // go to next settings state
+        nextSettingState();
       }
       // rising edge (released)
       else

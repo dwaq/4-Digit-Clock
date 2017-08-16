@@ -15,5 +15,6 @@ typedef enum
 
 void buttonsSetup(void);
 void timer1Setup(void);
+void nextSettingState(void);
 
 #endif // MAIN_H_
