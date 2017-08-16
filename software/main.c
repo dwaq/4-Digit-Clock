@@ -99,9 +99,13 @@ ISR (PCINT0_vect)
       // falling edge (pressed)
       if((PINC & (1 << PINC1)) == 0)
       {
-        // TODO: only do this if we're NOT in settings view
-        // switch between HH:MM and MM:SS
-        hr_display ^= 1;
+        // need to be in display mode to change
+        if (settings_mode == DISPLAY)
+        {
+          // switch between HH:MM and MM:SS
+          hr_display ^= 1;
+        }
+        // else in some settings mode...
       }
       // rising edge (released)
       else
