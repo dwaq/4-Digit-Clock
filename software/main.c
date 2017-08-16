@@ -19,6 +19,9 @@ int dp = 0;
 // switch between HH:MM and MM:SS
 int hr_display = 1;
 
+// default to display mode
+Settings_TypeDef settings_mode = DISPLAY;
+
 int main(void)
 {
   // set display pins to outputs
