@@ -13,6 +13,9 @@ int hr = 12;
 // decimal point
 int dp = 0;
 
+// switch between HH:MM and MM:SS
+int hr_display = 1;
+
 int main(void)
 {
   // set pins to outputs
@@ -23,8 +26,15 @@ int main(void)
 
   while(1)
   {
-  	// display all segments in loop so they keep updating
- 	display(hr/10, hr%10, dp, min_10, min_1);
+    // display all segments in loop so they keep updating
+    if(hr_display)
+    {
+      display(hr/10, hr%10, dp, min_10, min_1);
+    }
+    else
+    {
+      display(min_10, min_1, dp, sec/10, sec%10);
+    }
   }
 }
 
