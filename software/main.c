@@ -56,7 +56,7 @@ int main(void)
 // S1 Hr  left  A0  PC0 PCINT8
 // S2 Min right A1  PC1 PCINT9
 // https://sites.google.com/site/qeewiki/books/avr-guide/external-interrupts-on-the-atmega328
-buttonsSetup(void)
+void buttonsSetup(void)
 {
   // clear the pins (set them to input)
   DDRC &= ~(1 << DDC1 | 1 << DDC0);
@@ -117,7 +117,7 @@ ISR (PCINT0_vect)
 
 // this code sets up timer1 for a 1s  @ 16Mhz Clock (mode 4)
 // https://sites.google.com/site/qeewiki/books/avr-guide/timers-on-the-atmega328
-timer1Setup(void)
+void timer1Setup(void)
 {
   // Mode 4, CTC on OCR1A
   OCR1A = 0x3D08;
