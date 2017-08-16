@@ -22,7 +22,7 @@ int main(void)
   displaySetup();
 
   // setup timer for 1 second tick
-  timer1_init();
+  timer1Setup();
 
   while(1)
   {
@@ -40,7 +40,7 @@ int main(void)
 
 // this code sets up timer1 for a 1s  @ 16Mhz Clock (mode 4)
 // https://sites.google.com/site/qeewiki/books/avr-guide/timers-on-the-atmega328
-void timer1_init(void)
+void timer1Setup(void)
 {
   // Mode 4, CTC on OCR1A
   OCR1A = 0x3D08;
