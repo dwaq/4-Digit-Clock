@@ -4,6 +4,9 @@
 #include "main.h"
 #include "display.h"
 
+// start high but will read to get real defaults
+volatile uint8_t port_c_history = 0xFF;
+
 // displaying time
 int sec = 0;
 int min_1 = 0;
@@ -23,6 +26,9 @@ int main(void)
 
   // set button pins to interrupt-enabled inputs
   buttonsSetup();
+
+  // read port C to get default values
+  port_c_history = PINC;
 
   // setup timer for 1 second tick
   timer1Setup();
@@ -46,6 +52,7 @@ int main(void)
 
 // S1 Hr  left  A0  PC0 PCINT8
 // S2 Min right A1  PC1 PCINT9
+// https://sites.google.com/site/qeewiki/books/avr-guide/external-interrupts-on-the-atmega328
 buttonsSetup(void)
 {
   // clear the pins (set them to input)
@@ -59,6 +66,46 @@ buttonsSetup(void)
 
   // pin change interrupt is enabled on the corresponding I/O pin
   PCMSK1 |= (1 << PCINT9 | 1 << PCINT8);
+}
+
+ISR (PCINT0_vect)
+{
+    uint8_t changedbits;
+
+    changedbits = PINC ^ port_c_history;
+    port_c_history = PINC;
+
+    // S1 changed
+    if(changedbits & (1 << PINC0))
+    {
+      // falling edge (pressed)
+      if((PINC & (1 << PINC0)) == 0)
+      {
+        // go to settings
+      }
+      // rising edge (released)
+      else
+      {
+        // do we care about this?
+      }
+    }
+
+    // S2 changed
+    if(changedbits & (1 << PINC1))
+    {
+      // falling edge (pressed)
+      if((PINC & (1 << PINC1)) == 0)
+      {
+        // TODO: only do this if we're NOT in settings view
+        // switch between HH:MM and MM:SS
+        hr_display ^= 1;
+      }
+      // rising edge (released)
+      else
+      {
+        // do we care about this?
+      }
+    }
 }
 
 // this code sets up timer1 for a 1s  @ 16Mhz Clock (mode 4)
