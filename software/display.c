@@ -26,7 +26,7 @@ void display(int dig1, int dig2, int dp, int dig3, int dig4)
   else
   {
   	// dont't display decimal point (special parameter)
-  	digit(2, DP_OFF);
+  	digit(2, BLANK);
   }
 
 }
@@ -63,14 +63,14 @@ void digit(int digit, int number)
       break;
     case 4:
       PORTD &= ~(1<<PORTD2); // 4
-      break;	
+      break;
     //default:
       // bad - should't be here
   }
 }
 
-// display a number using the 7 segments
-// number must be between 0-9
+// display a number or symbol using the 7 segments
+// number can be between 0-9 or settings screen uses A-F
 // TODO: add range checks
 void segment(int number)
 {
@@ -138,13 +138,53 @@ void segment(int number)
       PORTC |= (1<<PORTC3); // D
       PORTD |= (1<<PORTD5 | 1<<PORTD0 | 1<<PORTD1); // B C G
       break;
-    case 10:
-	  // DP
-	  PORTC |= (1<<PORTC4);
-	  break;
+    // TODO: maybe use typedefs here instead?
+    case 0xA:
+      // A B C E F G
+      PORTB |= (1<<PORTB1 | 1<<PORTB0); // A F
+      PORTC |= (1<<PORTC2); // E
+      PORTD |= (1<<PORTD5 | 1<<PORTD0 | 1<<PORTD1); // B C G
+      break;
+    case 0xB:
+      // A B C D E F G
+      PORTB |= (1<<PORTB1 | 1<<PORTB0); // A F
+      PORTC |= (1<<PORTC3 | 1<<PORTC2); // D E
+      PORTD |= (1<<PORTD5 | 1<<PORTD0 | 1<<PORTD1); // B C G
+      break;
+    case 0xC:
+      // A D E F
+      PORTB |= (1<<PORTB1 | 1<<PORTB0); // A F
+      PORTC |= (1<<PORTC3 | 1<<PORTC2); // D E
+      break;
+    case 0xD:
+      // A B C D E F
+      PORTB |= (1<<PORTB1 | 1<<PORTB0); // A F
+      PORTC |= (1<<PORTC3 | 1<<PORTC2); // D E
+      PORTD |= (1<<PORTD5 | 1<<PORTD0); // B C
+      break;
+    case 0xE:
+      // A B D F G
+      PORTB |= (1<<PORTB1 | 1<<PORTB0); // A F
+      PORTC |= (1<<PORTC3); // D
+      PORTD |= (1<<PORTD5 | 1<<PORTD1); // B G
+      break;
+    case 0xF:
+      // A B F G
+      PORTB |= (1<<PORTB1 | 1<<PORTB0); // A F
+      PORTD |= (1<<PORTD5 | 1<<PORTD1); // B G
+      break;
+    case N:
+      // A B C E F
+      PORTB |= (1<<PORTB1 | 1<<PORTB0); // A F
+      PORTC |= (1<<PORTC2); // E
+      PORTD |= (1<<PORTD5 | 1<<PORTD0); // B C
+      break;
+    case DP_ON:
+  	  // DP
+  	  PORTC |= (1<<PORTC4);
+  	  break;
     //default:
-	  // case 11 falls through here
-	  // just turns off the decimal point by initial "reset all segments" code
-      // bad - should't be here
+      // case BLANK falls through here
+      // just turns off the segment by initial "reset all segments" code
   }
 }
