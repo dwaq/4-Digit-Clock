@@ -41,16 +41,22 @@ int main(void)
   // enable interrupts (for both buttons and timer1)
   sei();
 
+  // display in loop so they keep updating
   while(1)
   {
-    // display all segments in loop so they keep updating
-    if(hr_display)
+    // default display mode
+    if (settings_mode == DISPLAY)
     {
-      display(hr/10, hr%10, dp, min_10, min_1);
-    }
-    else
-    {
-      display(min_10, min_1, dp, sec/10, sec%10);
+      // HH:MM
+      if(hr_display)
+      {
+        display(hr/10, hr%10, dp, min_10, min_1);
+      }
+      // MM:SS
+      else
+      {
+        display(min_10, min_1, dp, sec/10, sec%10);
+      }
     }
   }
 }
