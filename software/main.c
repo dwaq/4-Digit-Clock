@@ -19,6 +19,10 @@ int dp = 0;
 // switch between HH:MM and MM:SS
 int hr_display = 1;
 
+// differentiate between AM and PM
+// 0 = AM // 1 = PM
+int time_of_day = 1;
+
 // default to display mode
 Settings_TypeDef settings_mode = DISPLAY;
 
@@ -36,6 +40,9 @@ int main(void)
 {
   // set display pins to outputs
   displaySetup();
+
+  // set LED pin to output
+  ledSetup();
 
   // set button pins to interrupt-enabled inputs
   buttonsSetup();
@@ -146,6 +153,24 @@ void nextSettingState(void)
   }
 }
 
+// AM/PM LED is on D4 PD4
+void ledSetup(void)
+{
+  DDRD |= (1<<DDD4);
+}
+
+// low is AM
+void ledAm(void)
+{
+  PORTD |= (1<<PORTD4);
+}
+
+// high is PM
+void ledPm(void)
+{
+  PORTD &= ~(1<<PORTD4);
+}
+
 // S1 Hr  left  A0  PC0 PCINT8
 // S2 Min right A1  PC1 PCINT9
 // https://sites.google.com/site/qeewiki/books/avr-guide/external-interrupts-on-the-atmega328
@@ -205,6 +230,18 @@ ISR (PCINT0_vect)
           if (++hr==13)
           {
             hr=1;
+
+            // flip between AM and PM
+            time_of_day ^= 1;
+
+            // change LED to match
+            if (time_of_day)
+            {
+              ledPm();
+            }
+            else{
+              ledAm();
+            }
           }
         }
         else if (settings_mode == SET_MIN)
@@ -288,6 +325,18 @@ ISR (TIMER1_COMPA_vect)
 		if (++hr==13)
 		{
 			hr=1;
+
+      // flip between AM and PM
+      time_of_day ^= 1;
+
+      // change LED to match
+      if (time_of_day)
+      {
+        ledPm();
+      }
+      else{
+        ledAm();
+      }
 		}
 	}
 

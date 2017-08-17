@@ -14,6 +14,9 @@ typedef enum
   SET_ALARM_MIN = 0xF
 } Settings_TypeDef;
 
+void ledSetup(void);
+void ledAm(void);
+void ledPm(void);
 void buttonsSetup(void);
 void timer1Setup(void);
 void nextSettingState(void);
