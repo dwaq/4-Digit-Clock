@@ -63,7 +63,7 @@ void digit(int digit, int number)
       break;
     case 4:
       PORTD &= ~(1<<PORTD2); // 4
-      break;	
+      break;
     //default:
       // bad - should't be here
   }
@@ -139,9 +139,9 @@ void segment(int number)
       PORTD |= (1<<PORTD5 | 1<<PORTD0 | 1<<PORTD1); // B C G
       break;
     case 10:
-	  // DP
-	  PORTC |= (1<<PORTC4);
-	  break;
+  	  // DP
+  	  PORTC |= (1<<PORTC4);
+  	  break;
     //default:
 	  // case 11 falls through here
 	  // just turns off the decimal point by initial "reset all segments" code
