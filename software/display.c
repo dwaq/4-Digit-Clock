@@ -138,7 +138,7 @@ void segment(int number)
       PORTC |= (1<<PORTC3); // D
       PORTD |= (1<<PORTD5 | 1<<PORTD0 | 1<<PORTD1); // B C G
       break;
-    case 10:
+    case DP_ON:
   	  // DP
   	  PORTC |= (1<<PORTC4);
   	  break;
