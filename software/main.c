@@ -200,6 +200,48 @@ ISR (PCINT0_vect)
           hr_display ^= 1;
         }
         // else in some settings mode...
+        else if (settings_mode == SET_HR)
+        {
+          if (++hr==13)
+          {
+            hr=1;
+          }
+        }
+        else if (settings_mode == SET_MIN)
+        {
+          if (++min_1==10)
+          {
+            min_1=0;
+            if (++min_10==6)
+            {
+              min_10=0;
+            }
+          }
+        }
+        else if (settings_mode == SET_CHIME)
+        {
+          // switch between chime enabled and disabled
+          chime_enabled ^= 1;
+        }
+        else if (settings_mode == SET_ALARM)
+        {
+          // switch between alarm enabled and disabled
+          alarm_enabled ^= 1;
+        }
+        else if (settings_mode == SET_ALARM_HR)
+        {
+          if (++alarm_hr==13)
+          {
+            alarm_hr=1;
+          }
+        }
+        else if (settings_mode == SET_ALARM_MIN)
+        {
+          if (++alarm_min==60)
+          {
+            alarm_min=1;
+          }
+        }
       }
       // rising edge (released)
       else
