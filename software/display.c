@@ -69,8 +69,8 @@ void digit(int digit, int number)
   }
 }
 
-// display a number using the 7 segments
-// number must be between 0-9
+// display a number or symbol using the 7 segments
+// number can be between 0-9 or settings screen uses A-F
 // TODO: add range checks
 void segment(int number)
 {
