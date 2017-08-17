@@ -153,6 +153,27 @@ void nextSettingState(void)
   }
 }
 
+// increase hour by 1 and handle AM/PM
+void increaseHour(void)
+{
+  if (++hr==13)
+  {
+    hr=1;
+
+    // flip between AM and PM
+    time_of_day ^= 1;
+
+    // change LED to match
+    if (time_of_day)
+    {
+      ledPm();
+    }
+    else{
+      ledAm();
+    }
+  }
+}
+
 // AM/PM LED is on D4 PD4
 void ledSetup(void)
 {
@@ -227,22 +248,7 @@ ISR (PCINT0_vect)
         // else in some settings mode...
         else if (settings_mode == SET_HR)
         {
-          if (++hr==13)
-          {
-            hr=1;
-
-            // flip between AM and PM
-            time_of_day ^= 1;
-
-            // change LED to match
-            if (time_of_day)
-            {
-              ledPm();
-            }
-            else{
-              ledAm();
-            }
-          }
+          increaseHour();
         }
         else if (settings_mode == SET_MIN)
         {
@@ -322,22 +328,7 @@ ISR (TIMER1_COMPA_vect)
 			}
 		}
 		// hours
-		if (++hr==13)
-		{
-			hr=1;
-
-      // flip between AM and PM
-      time_of_day ^= 1;
-
-      // change LED to match
-      if (time_of_day)
-      {
-        ledPm();
-      }
-      else{
-        ledAm();
-      }
-		}
+    increaseHour();
 	}
 
 	// flip decimal point every second

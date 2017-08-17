@@ -20,5 +20,6 @@ void ledPm(void);
 void buttonsSetup(void);
 void timer1Setup(void);
 void nextSettingState(void);
+void increaseHour(void);
 
 #endif // MAIN_H_
