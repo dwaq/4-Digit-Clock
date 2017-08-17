@@ -5,7 +5,8 @@
 
 // special parameters to handle decimal point
 #define DP_ON 16
-#define DP_OFF 17
+// this is a general parameter to turn any segment off
+#define BLANK 17
 
 // pinouts for common cathode 7 segment LED display:
 

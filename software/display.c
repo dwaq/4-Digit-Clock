@@ -26,7 +26,7 @@ void display(int dig1, int dig2, int dp, int dig3, int dig4)
   else
   {
   	// dont't display decimal point (special parameter)
-  	digit(2, DP_OFF);
+  	digit(2, BLANK);
   }
 
 }
@@ -177,7 +177,7 @@ void segment(int number)
   	  PORTC |= (1<<PORTC4);
   	  break;
     //default:
-      // case DP_OFF falls through here
-      // just turns off the decimal point by initial "reset all segments" code
+      // case BLANK falls through here
+      // just turns off the segment by initial "reset all segments" code
   }
 }
