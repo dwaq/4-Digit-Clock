@@ -177,8 +177,7 @@ void segment(int number)
   	  PORTC |= (1<<PORTC4);
   	  break;
     //default:
-	  // case 11 falls through here
-	  // just turns off the decimal point by initial "reset all segments" code
-      // bad - should't be here
+      // case DP_OFF falls through here
+      // just turns off the decimal point by initial "reset all segments" code
   }
 }
