@@ -3,10 +3,12 @@
 
 #include <avr/io.h>
 
+// letter n for displaying "on"
+#define N 16
 // special parameters to handle decimal point
-#define DP_ON 16
+#define DP_ON 17
 // this is a general parameter to turn any segment off
-#define BLANK 17
+#define BLANK 18
 
 // pinouts for common cathode 7 segment LED display:
 
