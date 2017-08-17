@@ -138,6 +138,40 @@ void segment(int number)
       PORTC |= (1<<PORTC3); // D
       PORTD |= (1<<PORTD5 | 1<<PORTD0 | 1<<PORTD1); // B C G
       break;
+    case 0xA:
+      // A B C E F G
+      PORTB |= (1<<PORTB1 | 1<<PORTB0); // A F
+      PORTC |= (1<<PORTC2); // E
+      PORTD |= (1<<PORTD5 | 1<<PORTD0 | 1<<PORTD1); // B C G
+      break;
+    case 0xB:
+      // A B C B E F G
+      PORTB |= (1<<PORTB1 | 1<<PORTB0); // A F
+      PORTC |= (1<<PORTC3 | 1<<PORTC2); // D E
+      PORTD |= (1<<PORTD5 | 1<<PORTD0 | 1<<PORTD1); // B C G
+      break;
+    case 0xC:
+      // A D E F
+      PORTB |= (1<<PORTB1 | 1<<PORTB0); // A F
+      PORTC |= (1<<PORTC3 | 1<<PORTC2); // D E
+      break;
+    case 0xD:
+      // A B C D E F
+      PORTB |= (1<<PORTB1 | 1<<PORTB0); // A F
+      PORTC |= (1<<PORTC3 | 1<<PORTC2); // D E
+      PORTD |= (1<<PORTD5 | 1<<PORTD0); // B C
+      break;
+    case 0xE:
+      // A B D F G
+      PORTB |= (1<<PORTB1 | 1<<PORTB0); // A F
+      PORTC |= (1<<PORTC3); // D
+      PORTD |= (1<<PORTD5 | 1<<PORTD1); // B G
+      break;
+    case 0xF:
+      // A B F G
+      PORTB |= (1<<PORTB1 | 1<<PORTB0); // A F
+      PORTD |= (1<<PORTD5 | 1<<PORTD1); // B G
+      break;
     case DP_ON:
   	  // DP
   	  PORTC |= (1<<PORTC4);
