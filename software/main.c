@@ -113,7 +113,7 @@ int main(void)
 
 // correctly move through settings states
 void nextSettingState(void)
-{  
+{
   // if you've turned alarm off, dont't set it, go back to display
   if ((settings_mode == SET_ALARM) & (alarm_enabled == 0))
   {
@@ -127,6 +127,22 @@ void nextSettingState(void)
   // else just go to next state
   else{
     settings_mode++;
+  }
+
+  // stop counting time when you're trying to set it
+  if (settings_mode == SET_HR)
+  {
+    // disable timer counter
+    TIMSK1 &= ~(1 << OCIE1A);
+
+    // also reset seconds for good measure
+    sec = 0;
+  }
+  // start counting after you've set the time
+  else if (settings_mode == SET_CHIME)
+  {
+    // start timer counter
+    TIMSK1 |= (1 << OCIE1A);
   }
 }
 
@@ -201,10 +217,10 @@ void timer1Setup(void)
   OCR1A = 0x3D08;
   TCCR1B |= (1 << WGM12);
 
-  //Set interrupt on compare match
+  // set interrupt on compare match
   TIMSK1 |= (1 << OCIE1A);
 
-  // set prescaler to 1024 and start the timer
+  // set prescaler to 1024
   TCCR1B |= (1 << CS12) | (1 << CS10);
 }
 
