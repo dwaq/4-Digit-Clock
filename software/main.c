@@ -58,6 +58,10 @@ int main(void)
         display(min_10, min_1, dp, sec/10, sec%10);
       }
     }
+    else if (settings_mode == SET_HR)
+    {
+      display(SET_HR, BLANK, BLANK, min_10, min_1);
+    }
   }
 }
 

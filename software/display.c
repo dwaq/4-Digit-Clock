@@ -138,6 +138,7 @@ void segment(int number)
       PORTC |= (1<<PORTC3); // D
       PORTD |= (1<<PORTD5 | 1<<PORTD0 | 1<<PORTD1); // B C G
       break;
+    // TODO: maybe use typedefs here instead?
     case 0xA:
       // A B C E F G
       PORTB |= (1<<PORTB1 | 1<<PORTB0); // A F
