@@ -21,8 +21,16 @@ int hr_display = 1;
 
 // default to display mode
 Settings_TypeDef settings_mode = DISPLAY;
-// state of alarm
-int alarm_state = 0;
+
+// hourly chime on or off
+int chime_enabled = 1;
+
+// alarm on or off
+int alarm_enabled = 1;
+// alarm time
+int alarm_hr = 12;
+int alarm_min = 0;
+
 
 int main(void)
 {
@@ -60,16 +68,54 @@ int main(void)
     }
     else if (settings_mode == SET_HR)
     {
-      display(SET_HR, BLANK, BLANK, min_10, min_1);
+      display(SET_HR, BLANK, BLANK, hr/10, hr%10);
+    }
+    else if (settings_mode == SET_MIN)
+    {
+      display(SET_MIN, BLANK, BLANK, min_10, min_1);
+    }
+    else if (settings_mode == SET_CHIME)
+    {
+      // on
+      if (chime_enabled)
+      {
+        display(SET_CHIME, BLANK, BLANK, 0, N);
+      }
+      // off
+      else
+      {
+        display(SET_CHIME, 0, BLANK, 0xF, 0xF);
+      }
+    }
+    else if (settings_mode == SET_ALARM)
+    {
+      // on
+      if (alarm_enabled)
+      {
+        display(SET_ALARM, BLANK, BLANK, 0, N);
+      }
+      // off
+      else
+      {
+        display(SET_ALARM, 0, BLANK, 0xF, 0xF);
+      }
+    }
+    else if (settings_mode == SET_ALARM_HR)
+    {
+      display(SET_ALARM_HR, BLANK, BLANK, alarm_hr/10, alarm_hr%10);
+    }
+    else if (settings_mode == SET_ALARM_MIN)
+    {
+      display(SET_ALARM_MIN, BLANK, BLANK, alarm_min/10, alarm_min%10);
     }
   }
 }
 
 // correctly move through settings states
 void nextSettingState(void)
-{
-  // if you've turned alarm off, go back to display
-  if ((settings_mode == SET_ALARM) & (alarm_state == 0))
+{  
+  // if you've turned alarm off, dont't set it, go back to display
+  if ((settings_mode == SET_ALARM) & (alarm_enabled == 0))
   {
     settings_mode = DISPLAY;
   }
