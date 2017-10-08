@@ -389,11 +389,12 @@ void setDigit(int digit, int number)
   switch(digit)
   {
     case 1:
+    // TODO: ONLY when display hours,
     // don't display leading 0
-    if (number != 0)
-    {
+    //if (number != 0)
+    //{
         PORTB &= ~(1<<PORTB2); // 1
-    }
+    //}
       break;
     // this case also handles decimal point
     case 2:
