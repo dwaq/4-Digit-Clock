@@ -86,7 +86,6 @@ int alarm_min = 0;
 
 
 void setup() {
-  // put your setup code here, to run once:
   // set display pins to outputs
   displaySetup();
   
@@ -102,8 +101,7 @@ void setup() {
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-// display in loop so they keep updating
+  // displayDigits in loop so they keep updating
 
   // default display mode
   if (settings_mode == DISPLAY)
@@ -185,7 +183,7 @@ void nextSettingState(void)
   if (settings_mode == SET_HR)
   {
     // disable timer counter
-    TIMSK1 &= ~(1 << OCIE1A);
+    Timer1.stop();
 
     // also reset seconds for good measure
     sec = 0;
@@ -193,8 +191,8 @@ void nextSettingState(void)
   // start counting after you've set the time
   else if (settings_mode == SET_CHIME)
   {
-    // start timer counter
-    TIMSK1 |= (1 << OCIE1A);
+    // restart timer counter
+    Timer1.restart();
   }
 }
 
