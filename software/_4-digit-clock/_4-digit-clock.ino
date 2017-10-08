@@ -76,7 +76,7 @@ int time_of_day = 1;
 int settings_mode = DISPLAY;
 
 // hourly chime on or off
-int chime_enabled = 1;
+int hr_chime_enabled = 1;
 
 // alarm on or off
 int alarm_enabled = 1;
@@ -131,7 +131,7 @@ void loop() {
   else if (settings_mode == SET_CHIME)
   {
     // on
-    if (chime_enabled)
+    if (hr_chime_enabled)
     {
       displayDigits(SET_CHIME, BLANK, BLANK, 0, N);
     }
@@ -331,8 +331,8 @@ void buttonS2()
   }
   else if (settings_mode == SET_CHIME)
   {
-    // switch between chime enabled and disabled
-    chime_enabled ^= 1;
+    // switch between hourly chime enabled and disabled
+    hr_chime_enabled ^= 1;
   }
   else if (settings_mode == SET_ALARM)
   {
