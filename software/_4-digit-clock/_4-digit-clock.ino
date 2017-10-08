@@ -105,8 +105,7 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
 // display in loop so they keep updating
-while(1)
-{
+
   // default display mode
   if (settings_mode == DISPLAY)
   {
@@ -163,7 +162,6 @@ while(1)
   {
     displayDigits(SET_ALARM_MIN, BLANK, BLANK, alarm_min/10, alarm_min%10);
   }
-}
 }
 
 // correctly move through settings states
