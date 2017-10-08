@@ -265,6 +265,8 @@ ISR(PCINT1_vect) {
   {
     // set to 10
     buttonBlockA0 = 10;
+    // send 133 frequency tone for 70 ms to pin 3
+    tone(3, 133, 70);
     buttonS1();
   }
   // release A0
@@ -282,6 +284,8 @@ ISR(PCINT1_vect) {
   {
     // set to 10
     buttonBlockA1 = 10;
+    // send 133 frequency tone for 70 ms to pin 3
+    tone(3, 133, 70);
     buttonS2();
   }
   // release A1
