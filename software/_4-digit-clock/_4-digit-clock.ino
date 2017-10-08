@@ -1,3 +1,5 @@
+#include <TimerOne.h>
+
 // letter n for displaying "on"
 #define N 16
 // special parameters to handle decimal point
@@ -39,8 +41,8 @@ void ledSetup(void);
 void ledAm(void);
 void ledPm(void);
 void buttonsSetup(void);
-void timer1Setup(void);
 void nextSettingState(void);
+void increaseSecond(void);
 void increaseHour(void);
 void displaySetup(void);
 // time(1234);
@@ -96,7 +98,8 @@ void setup() {
     port_c_history = PINC;
   
     // setup timer for 1 second tick
-    timer1Setup();
+    Timer1.initialize(1000000);
+    Timer1.attachInterrupt(increaseSecond);
   
     // enable interrupts (for both buttons and timer1)
     sei();
@@ -340,23 +343,8 @@ ISR (PCINT0_vect)
     }
 }
 
-// this code sets up timer1 for a 1s  @ 16Mhz Clock (mode 4)
-// https://sites.google.com/site/qeewiki/books/avr-guide/timers-on-the-atmega328
-void timer1Setup(void)
-{
-  // Mode 4, CTC on OCR1A
-  OCR1A = 0x3D08;
-  TCCR1B |= (1 << WGM12);
-
-  // set interrupt on compare match
-  TIMSK1 |= (1 << OCIE1A);
-
-  // set prescaler to 1024
-  TCCR1B |= (1 << CS12) | (1 << CS10);
-}
-
 // action to be done every 1 sec
-ISR (TIMER1_COMPA_vect)
+void increaseSecond()
 {
 	//keep track of time
 	// using 2 instead of 60 to make it faster
