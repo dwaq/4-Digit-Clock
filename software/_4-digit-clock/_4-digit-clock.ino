@@ -321,7 +321,7 @@ void increaseSecond()
 {
 	//keep track of time
 	// using 2 instead of 60 to make it faster
-	if (++sec==2)
+	if (++sec==60)
 	{
 		sec=0;
 		// minutes
@@ -331,11 +331,9 @@ void increaseSecond()
 			if (++min_10==6)
 			{
 				min_10=0;
-				// TODO: hours code should actually be here...
+				increaseHour();
 			}
 		}
-		// hours
-    increaseHour();
 	}
 
 	// flip decimal point every second
