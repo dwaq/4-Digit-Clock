@@ -202,6 +202,13 @@ void nextSettingState(void)
 // increase hour by 1 and handle AM/PM
 void increaseHour(void)
 {
+  // play chime on the hour if enabled
+  if (hr_chime_enabled)
+  {
+    // send 133 frequency tone for 70 ms to pin 3
+    tone(3, 133, 70);
+  }
+  
   if (++hr==13)
   {
     hr=1;
