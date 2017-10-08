@@ -84,6 +84,9 @@ int alarm_enabled = 1;
 int alarm_hr = 12;
 int alarm_min = 0;
 
+// capture only 1 button press (kinda like debouncing)
+int buttonBlockA0 = 0;
+int buttonBlockA1 = 0;
 
 void setup() {
   // set display pins to outputs
@@ -254,10 +257,42 @@ void buttonsSetup()
   sei();
 }
 
-// Interrupt service routine. Every single PCINT8..14 (=ADC0..5) change
+// Interrupt service routine for every analog pin change
+// A0, A1, A2, A3, A4, A5
 ISR(PCINT1_vect) {
-  if (digitalRead(A0)==0)  buttonS1();
-  if (digitalRead(A1)==0)  buttonS2();
+  // press A0
+  if (digitalRead(A0)==0 && buttonBlockA0==0)
+  {
+    // set to 10
+    buttonBlockA0 = 10;
+    buttonS1();
+  }
+  // release A0
+  if (digitalRead(A0)==1)
+  {
+    // count down after releasing
+    if (buttonBlockA0 > 0)
+    {
+      buttonBlockA0--;
+    }
+  }
+
+  // press A1
+  if (digitalRead(A1)==0 && buttonBlockA1==0)
+  {
+    // set to 10
+    buttonBlockA1 = 10;
+    buttonS2();
+  }
+  // release A1
+  if (digitalRead(A1)==1)
+  {
+    // count down after releasing
+    if (buttonBlockA1 > 0)
+    {
+      buttonBlockA1--;
+    }
+  }
 }
 
 void buttonS1()
