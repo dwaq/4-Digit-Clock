@@ -40,19 +40,21 @@
 void ledSetup(void);
 void ledAm(void);
 void ledPm(void);
+
 void buttonsSetup(void);
+void buttonsS1(void);
+void buttonsS2(void);
+
 void nextSettingState(void);
+
 void increaseSecond(void);
 void increaseHour(void);
+
 void displaySetup(void);
-// time(1234);
 void displayDigits(int dig1, int dig2, int dp, int dig3, int dig4);
 void setDigit(int digit, int number);
 void setSegment(int number);
 
-
-// start high but will read to get real defaults
-volatile uint8_t port_c_history = 0xFF;
 
 // displaying time
 int sec = 0;
@@ -88,21 +90,15 @@ void setup() {
   // set display pins to outputs
   displaySetup();
   
-    // set LED pin to output
-    ledSetup();
-  
-    // set button pins to interrupt-enabled inputs
-    buttonsSetup();
-  
-    // read port C to get default values
-    port_c_history = PINC;
-  
-    // setup timer for 1 second tick
-    Timer1.initialize(1000000);
-    Timer1.attachInterrupt(increaseSecond);
-  
-    // enable interrupts (for both buttons and timer1)
-    sei();
+  // set LED pin to output
+  ledSetup();
+
+  // set button pins to interrupt-enabled inputs
+  buttonsSetup();
+
+  // setup timer for 1 second tick
+  Timer1.initialize(1000000);
+  Timer1.attachInterrupt(increaseSecond);
 }
 
 void loop() {
@@ -241,106 +237,85 @@ void ledPm(void)
   PORTD &= ~(1<<PORTD4);
 }
 
-// S1 Hr  left  A0  PC0 PCINT8
-// S2 Min right A1  PC1 PCINT9
-// https://sites.google.com/site/qeewiki/books/avr-guide/external-interrupts-on-the-atmega328
-void buttonsSetup(void)
+// Hack to get pin change interrupts on analog pins
+// http://www.geertlangereis.nl/Electronics/Pin_Change_Interrupts/PinChange_en.html
+void buttonsSetup()
 {
-  // clear the pins (set them to input)
-  DDRC &= ~(1 << DDC1 | 1 << DDC0);
+  // set button pins as inputs with internal pull-ups enabled
+  pinMode(A0, INPUT);
+  digitalWrite(A0, HIGH);
+  pinMode(A1, INPUT);
+  digitalWrite(A1, HIGH);
 
-  // turn on the internal pull-up resistors
-  PORTC |= (1 << PORTC1 | 1 << PORTC0);
-
-  // any change on any enabled PCINT[14:8] pin will cause an interrupt
-  PCICR |= (1 << PCIE1);
-
-  // pin change interrupt is enabled on the corresponding I/O pin
-  PCMSK1 |= (1 << PCINT9 | 1 << PCINT8);
+  // switch interrupts off while messing with their settings  
+  cli();
+  // Enable PCINT1 interrupt
+  PCICR =0x02;
+  PCMSK1 = 0b00000111;
+  // turn interrupts back on
+  sei();
 }
 
-ISR (PCINT0_vect)
+// Interrupt service routine. Every single PCINT8..14 (=ADC0..5) change
+ISR(PCINT1_vect) {
+  if (digitalRead(A0)==0)  buttonS1();
+  if (digitalRead(A1)==0)  buttonS2();
+}
+
+void buttonS1()
 {
-    uint8_t changedbits;
+  // go to next settings state
+  nextSettingState();
+}
 
-    changedbits = PINC ^ port_c_history;
-    port_c_history = PINC;
-
-    // S1 changed
-    if(changedbits & (1 << PINC0))
+void buttonS2()
+{    
+  // need to be in display mode to change
+  if (settings_mode == DISPLAY)
+  {
+    // switch between HH:MM and MM:SS
+    hr_display ^= 1;
+  }
+  // else in some settings mode...
+  else if (settings_mode == SET_HR)
+  {
+    increaseHour();
+  }
+  else if (settings_mode == SET_MIN)
+  {
+    if (++min_1==10)
     {
-      // falling edge (pressed)
-      if((PINC & (1 << PINC0)) == 0)
+      min_1=0;
+      if (++min_10==6)
       {
-        // go to next settings state
-        nextSettingState();
-      }
-      // rising edge (released)
-      else
-      {
-        // do we care about this?
+        min_10=0;
       }
     }
-
-    // S2 changed
-    if(changedbits & (1 << PINC1))
+  }
+  else if (settings_mode == SET_CHIME)
+  {
+    // switch between chime enabled and disabled
+    chime_enabled ^= 1;
+  }
+  else if (settings_mode == SET_ALARM)
+  {
+    // switch between alarm enabled and disabled
+    alarm_enabled ^= 1;
+  }
+  else if (settings_mode == SET_ALARM_HR)
+  {
+    if (++alarm_hr==13)
     {
-      // falling edge (pressed)
-      if((PINC & (1 << PINC1)) == 0)
-      {
-        // need to be in display mode to change
-        if (settings_mode == DISPLAY)
-        {
-          // switch between HH:MM and MM:SS
-          hr_display ^= 1;
-        }
-        // else in some settings mode...
-        else if (settings_mode == SET_HR)
-        {
-          increaseHour();
-        }
-        else if (settings_mode == SET_MIN)
-        {
-          if (++min_1==10)
-          {
-            min_1=0;
-            if (++min_10==6)
-            {
-              min_10=0;
-            }
-          }
-        }
-        else if (settings_mode == SET_CHIME)
-        {
-          // switch between chime enabled and disabled
-          chime_enabled ^= 1;
-        }
-        else if (settings_mode == SET_ALARM)
-        {
-          // switch between alarm enabled and disabled
-          alarm_enabled ^= 1;
-        }
-        else if (settings_mode == SET_ALARM_HR)
-        {
-          if (++alarm_hr==13)
-          {
-            alarm_hr=1;
-          }
-        }
-        else if (settings_mode == SET_ALARM_MIN)
-        {
-          if (++alarm_min==60)
-          {
-            alarm_min=1;
-          }
-        }
-      }
-      // rising edge (released)
-      else
-      {
-        // do we care about this?
-      }
+      alarm_hr=1;
     }
+  }
+  else if (settings_mode == SET_ALARM_MIN)
+  {
+    if (++alarm_min==60)
+    {
+      alarm_min=1;
+    }
+  }
 }
 
 // action to be done every 1 sec
