@@ -505,15 +505,16 @@ void setSegment(int number)
       PORTD |= (1<<PORTD5 | 1<<PORTD0); // B C
       break;
     case 0xE:
-      // A B D F G
+      // A D E F G
       PORTB |= (1<<PORTB1 | 1<<PORTB0); // A F
-      PORTC |= (1<<PORTC3); // D
-      PORTD |= (1<<PORTD5 | 1<<PORTD1); // B G
+      PORTC |= (1<<PORTC3 | 1<<PORTC2); // D E
+      PORTD |= (1<<PORTD1); // G
       break;
     case 0xF:
-      // A B F G
+      // A E F G
       PORTB |= (1<<PORTB1 | 1<<PORTB0); // A F
-      PORTD |= (1<<PORTD5 | 1<<PORTD1); // B G
+      PORTC |= (1<<PORTC2); // E
+      PORTD |= (1<<PORTD1); // G
       break;
     case N:
       // A B C E F
