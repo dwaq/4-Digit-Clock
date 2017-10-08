@@ -3,6 +3,7 @@
 *.b$*
 *.b#*
 *.l$*
+*.lck
 
 # compiled files
 *.dep
