@@ -5924,7 +5924,7 @@ Source: www.kingbright.com</description>
 <part name="C5" library="ng" deviceset="UNPOLARIZED_CAPACITOR" device="1206" value="18pF"/>
 <part name="R9" library="ng" deviceset="RESISTOR" device="1206" value="10K"/>
 <part name="P+2" library="supply1" deviceset="VCC" device=""/>
-<part name="S0" library="ng" deviceset="6MM_SWITCH" device="6MM_SWITCH" value="HR"/>
+<part name="S0" library="ng" deviceset="6MM_SWITCH" device="6MM_SWITCH"/>
 <part name="C2" library="ng" deviceset="UNPOLARIZED_CAPACITOR" device="1206" value="10uF"/>
 <part name="C7" library="ng" deviceset="UNPOLARIZED_CAPACITOR" device="1206" value=".1uF"/>
 <part name="U$1" library="fab" deviceset="ATMEGA88-THIN" device=""/>
@@ -5932,7 +5932,7 @@ Source: www.kingbright.com</description>
 <part name="GND2" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="GND1" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="P+1" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VCC" device=""/>
-<part name="S1" library="ng" deviceset="6MM_SWITCH" device="6MM_SWITCH" value="MIN"/>
+<part name="S1" library="ng" deviceset="6MM_SWITCH" device="6MM_SWITCH"/>
 <part name="P+4" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VCC" device=""/>
 <part name="GND5" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="U$2" library="4-Digit-Clock" deviceset="HEADER" device=""/>
