@@ -6275,15 +6275,6 @@ Header</text>
 <pinref part="U$1" gate="G$1" pin="PD4(XCK/T0)"/>
 </segment>
 <segment>
-<pinref part="LED2" gate="G$1" pin="A"/>
-<wire x1="115.57" y1="88.9" x2="115.57" y2="93.98" width="0.1524" layer="91"/>
-<pinref part="LED1" gate="G$1" pin="C"/>
-<wire x1="115.57" y1="93.98" x2="115.57" y2="99.06" width="0.1524" layer="91"/>
-<junction x="115.57" y="93.98"/>
-<pinref part="R10" gate="G$1" pin="1"/>
-<wire x1="107.95" y1="93.98" x2="115.57" y2="93.98" width="0.1524" layer="91"/>
-</segment>
-<segment>
 <wire x1="90.17" y1="93.98" x2="97.79" y2="93.98" width="0.1524" layer="91"/>
 <label x="90.17" y="93.98" size="1.778" layer="95"/>
 <pinref part="R10" gate="G$1" pin="2"/>
@@ -6534,6 +6525,17 @@ Header</text>
 <pinref part="LED2" gate="G$1" pin="C"/>
 <pinref part="R11" gate="G$1" pin="1"/>
 <wire x1="115.57" y1="81.28" x2="115.57" y2="76.2" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$3" class="0">
+<segment>
+<pinref part="LED1" gate="G$1" pin="C"/>
+<pinref part="LED2" gate="G$1" pin="A"/>
+<wire x1="115.57" y1="99.06" x2="115.57" y2="93.98" width="0.1524" layer="91"/>
+<pinref part="R10" gate="G$1" pin="1"/>
+<wire x1="115.57" y1="93.98" x2="115.57" y2="88.9" width="0.1524" layer="91"/>
+<wire x1="107.95" y1="93.98" x2="115.57" y2="93.98" width="0.1524" layer="91"/>
+<junction x="115.57" y="93.98"/>
 </segment>
 </net>
 </nets>
