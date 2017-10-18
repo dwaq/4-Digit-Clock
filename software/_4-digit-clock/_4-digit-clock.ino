@@ -29,7 +29,7 @@
 
 // settings state
 // these values make the code easier
-#define DISPLAY 9
+const int CLOCK = 9;
 #define SET_HR 0xA
 #define SET_MIN 0xB
 #define SET_CHIME 0xC
@@ -72,8 +72,8 @@ int dp = 0;
 // switch between HH:MM and MM:SS
 int hr_display = 1;
 
-// default to display mode
-int settings_mode = DISPLAY;
+// default to clock display mode
+int settings_mode = CLOCK;
 
 // hourly chime on or off
 int hr_chime_enabled = 1;
@@ -125,8 +125,8 @@ void setup() {
 void loop() {
   // displayDigits in loop so they keep updating
 
-  // default display mode
-  if (settings_mode == DISPLAY)
+  // default clock display mode
+  if (settings_mode == CLOCK)
   {
     // HH:MM
     if(hr_display)
@@ -186,15 +186,15 @@ void loop() {
 // correctly move through settings states
 void nextSettingState(void)
 {
-  // if you've turned alarm off, dont't set it, go back to display
+  // if you've turned alarm off, dont't set it, go back to clock display
   if ((settings_mode == SET_ALARM) & (alarm.enabled == 0))
   {
-    settings_mode = DISPLAY;
+    settings_mode = CLOCK;
   }
-  // last setting, go back to display
+  // last setting, go back to clock display
   else if (settings_mode == SET_ALARM_MIN)
   {
-    settings_mode = DISPLAY;
+    settings_mode = CLOCK;
   }
   // else just go to next state
   else{
@@ -333,8 +333,8 @@ void buttonS1()
 
 void buttonS2()
 {
-  // need to be in display mode to change
-  if (settings_mode == DISPLAY)
+  // need to be in clock display mode to change these settings
+  if (settings_mode == CLOCK)
   {
     // switch between HH:MM and MM:SS
     hr_display ^= 1;
