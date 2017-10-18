@@ -365,6 +365,8 @@ void buttonS2()
     if (++alarm.hr==13)
     {
       alarm.hr=1;
+      // flip between AM and PM
+      alarm.time_of_day ^= 1;
     }
   }
   else if (settings_mode == SET_ALARM_MIN)
