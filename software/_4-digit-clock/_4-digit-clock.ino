@@ -1,12 +1,5 @@
 #include <TimerOne.h>
 
-// letter n for displaying "on"
-#define N 16
-// special parameters to handle decimal point
-#define DP_ON 17
-// this is a general parameter to turn any segment off
-#define BLANK 18
-
 // pinouts for common cathode 7 segment LED display:
 
 // segment is active high
@@ -27,15 +20,23 @@
 // 3  8  D6  PD6
 // 4  6  D2  PD2
 
-// settings state
-// these values make the code easier
+// These values make the code easier, because you can
+// use the same values for display during the setting mode
+// and they're sequential so you can increment through them
+// settings states
 const int CLOCK = 9;
-#define SET_HR 0xA
-#define SET_MIN 0xB
-#define SET_CHIME 0xC
-#define SET_ALARM 0xD
-#define SET_ALARM_HR 0xE
-#define SET_ALARM_MIN 0xF
+const int SET_HR = 0xA;
+const int SET_MIN = 0xB;
+const int SET_CHIME = 0xC;
+const int SET_ALARM = 0xD;
+const int SET_ALARM_HR = 0xE;
+const int SET_ALARM_MIN = 0xF;
+// letter n for displaying "on"
+const int N = 0x10;
+// special parameters to handle decimal point
+const int DP_ON = 0x11;
+// this is a general parameter to turn any segment off
+const int BLANK = 0x12;
 
 void ledSetup(void);
 void ledAm(void);
