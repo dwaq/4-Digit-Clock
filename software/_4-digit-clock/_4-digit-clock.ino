@@ -55,22 +55,22 @@ void displayDigits(int dig1, int dig2, int dp, int dig3, int dig4);
 void setDigit(int digit, int number);
 void setSegment(int number);
 
-
-// displaying time
-int sec = 0;
-int min_1 = 0;
-int min_10 = 0;
-int hr = 12;
+// time
+struct TimeType {
+  int sec;
+  int min;
+  int hr;
+  // differentiate between AM and PM
+  // 0 = AM // 1 = PM
+  int time_of_day;
+};
+TimeType time;
 
 // decimal point
 int dp = 0;
 
 // switch between HH:MM and MM:SS
 int hr_display = 1;
-
-// differentiate between AM and PM
-// 0 = AM // 1 = PM
-int time_of_day = 1;
 
 // default to display mode
 int settings_mode = DISPLAY;
@@ -96,8 +96,13 @@ int buttonBlockA0 = 0;
 int buttonBlockA1 = 0;
 
 void setup() {
-  // set up default alarm values
+  // set up default time values
+  time.sec = 0;
+  time.min = 0;
+  time.hr = 12;
+  time.time_of_day = 1;
 
+  // set up default alarm values
   alarm.hr = 12;
   alarm.min = 0;
   alarm.time_of_day = 1;
@@ -126,21 +131,21 @@ void loop() {
     // HH:MM
     if(hr_display)
     {
-      displayDigits(hr/10, hr%10, dp, min_10, min_1);
+      displayDigits(time.hr/10, time.hr%10, dp, time.min/10, time.min%10);
     }
     // MM:SS
     else
     {
-      displayDigits(min_10, min_1, dp, sec/10, sec%10);
+      displayDigits(time.min/10, time.min%10, dp, time.sec/10, time.sec%10);
     }
   }
   else if (settings_mode == SET_HR)
   {
-    displayDigits(SET_HR, BLANK, BLANK, hr/10, hr%10);
+    displayDigits(SET_HR, BLANK, BLANK, time.hr/10, time.hr%10);
   }
   else if (settings_mode == SET_MIN)
   {
-    displayDigits(SET_MIN, BLANK, BLANK, min_10, min_1);
+    displayDigits(SET_MIN, BLANK, BLANK, time.min/10, time.min%10);
   }
   else if (settings_mode == SET_CHIME)
   {
@@ -203,7 +208,7 @@ void nextSettingState(void)
     Timer1.stop();
 
     // also reset seconds for good measure
-    sec = 0;
+    time.sec = 0;
   }
   // start counting after you've set the time
   else if (settings_mode == SET_CHIME)
@@ -223,15 +228,15 @@ void increaseHour(void)
     tone(3, 133, 70);
   }
 
-  if (++hr==13)
+  if (++time.hr==13)
   {
-    hr=1;
+    time.hr=1;
 
     // flip between AM and PM
-    time_of_day ^= 1;
+    time.time_of_day ^= 1;
 
     // change LED to match
-    if (time_of_day)
+    if (time.time_of_day)
     {
       ledPm();
     }
@@ -341,13 +346,9 @@ void buttonS2()
   }
   else if (settings_mode == SET_MIN)
   {
-    if (++min_1==10)
+    if (++time.min==60)
     {
-      min_1=0;
-      if (++min_10==6)
-      {
-        min_10=0;
-      }
+      time.min=0;
     }
   }
   else if (settings_mode == SET_CHIME)
@@ -383,18 +384,14 @@ void increaseSecond()
 {
 	//keep track of time
 	// using 2 instead of 60 to make it faster
-	if (++sec==60)
+	if (++time.sec==60)
 	{
-		sec=0;
+		time.sec=0;
 		// minutes
-		if (++min_1==10)
+		if (++time.min==60)
 		{
-			min_1=0;
-			if (++min_10==6)
-			{
-				min_10=0;
-				increaseHour();
-			}
+			time.min=0;
+			increaseHour();
 		}
 	}
 
