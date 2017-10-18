@@ -64,20 +64,12 @@ struct TimeType {
   // differentiate between AM and PM
   // 0 = AM // 1 = PM
   int time_of_day;
+  // decimal point
+  int dp;
+  // switch between HH:MM and MM:SS
+  int display;
 };
 TimeType time;
-
-// decimal point
-int dp = 0;
-
-// switch between HH:MM and MM:SS
-int hr_display = 1;
-
-// default to clock display mode
-int settings_mode = CLOCK;
-
-// hourly chime on or off
-int hr_chime_enabled = 1;
 
 // alarm
 struct AlarmType {
@@ -92,6 +84,12 @@ struct AlarmType {
 };
 AlarmType alarm;
 
+// default to clock display mode
+int settings_mode = CLOCK;
+
+// hourly chime on or off
+int hr_chime_enabled = 1;
+
 // capture only 1 button press (kinda like debouncing)
 int buttonBlockA0 = 0;
 int buttonBlockA1 = 0;
@@ -102,6 +100,8 @@ void setup() {
   time.min = 0;
   time.hr = 12;
   time.time_of_day = 1;
+  time.dp = 0;
+  time.display = 1;
 
   // set up default alarm values
   alarm.hr = 12;
@@ -130,14 +130,14 @@ void loop() {
   if (settings_mode == CLOCK)
   {
     // HH:MM
-    if(hr_display)
+    if(time.display)
     {
-      displayDigits(time.hr/10, time.hr%10, dp, time.min/10, time.min%10);
+      displayDigits(time.hr/10, time.hr%10, time.dp, time.min/10, time.min%10);
     }
     // MM:SS
     else
     {
-      displayDigits(time.min/10, time.min%10, dp, time.sec/10, time.sec%10);
+      displayDigits(time.min/10, time.min%10, time.dp, time.sec/10, time.sec%10);
     }
   }
   else if (settings_mode == SET_HR)
@@ -338,7 +338,7 @@ void buttonS2()
   if (settings_mode == CLOCK)
   {
     // switch between HH:MM and MM:SS
-    hr_display ^= 1;
+    time.display ^= 1;
   }
   // else in some settings mode...
   else if (settings_mode == SET_HR)
@@ -399,7 +399,7 @@ void increaseSecond()
 	}
 
 	// flip decimal point every second
-	dp ^= 1;
+	time.dp ^= 1;
 }
 
 
