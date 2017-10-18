@@ -369,6 +369,8 @@ void buttonS2()
       alarm.hr=1;
       // flip between AM and PM
       alarm.time_of_day ^= 1;
+      // TODO: set LED coorespoding to time
+      // but rememeber to unset it when moving to next state
     }
   }
   else if (settings_mode == SET_ALARM_MIN)
