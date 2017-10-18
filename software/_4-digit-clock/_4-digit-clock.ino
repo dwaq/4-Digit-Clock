@@ -78,20 +78,34 @@ int settings_mode = DISPLAY;
 // hourly chime on or off
 int hr_chime_enabled = 1;
 
-// alarm on or off
-int alarm_enabled = 1;
-// alarm time
-int alarm_hr = 12;
-int alarm_min = 0;
+// alarm
+struct AlarmType {
+  // alarm on or off
+  int enabled;
+  // alarm time
+  int hr;
+  int min;
+  // AM/PM for alarm
+  // 0 = AM // 1 = PM
+  int time_of_day;
+};
+AlarmType alarm;
 
 // capture only 1 button press (kinda like debouncing)
 int buttonBlockA0 = 0;
 int buttonBlockA1 = 0;
 
 void setup() {
+  // set up default alarm values
+
+  alarm.hr = 12;
+  alarm.min = 0;
+  alarm.time_of_day = 1;
+  alarm.enabled = 1;
+
   // set display pins to outputs
   displaySetup();
-  
+
   // set LED pin to output
   ledSetup();
 
@@ -144,7 +158,7 @@ void loop() {
   else if (settings_mode == SET_ALARM)
   {
     // on
-    if (alarm_enabled)
+    if (alarm.enabled)
     {
       displayDigits(SET_ALARM, BLANK, BLANK, 0, N);
     }
@@ -156,11 +170,11 @@ void loop() {
   }
   else if (settings_mode == SET_ALARM_HR)
   {
-    displayDigits(SET_ALARM_HR, BLANK, BLANK, alarm_hr/10, alarm_hr%10);
+    displayDigits(SET_ALARM_HR, BLANK, BLANK, alarm.hr/10, alarm.hr%10);
   }
   else if (settings_mode == SET_ALARM_MIN)
   {
-    displayDigits(SET_ALARM_MIN, BLANK, BLANK, alarm_min/10, alarm_min%10);
+    displayDigits(SET_ALARM_MIN, BLANK, BLANK, alarm.min/10, alarm.min%10);
   }
 }
 
@@ -168,7 +182,7 @@ void loop() {
 void nextSettingState(void)
 {
   // if you've turned alarm off, dont't set it, go back to display
-  if ((settings_mode == SET_ALARM) & (alarm_enabled == 0))
+  if ((settings_mode == SET_ALARM) & (alarm.enabled == 0))
   {
     settings_mode = DISPLAY;
   }
@@ -208,7 +222,7 @@ void increaseHour(void)
     // send 133 frequency tone for 70 ms to pin 3
     tone(3, 133, 70);
   }
-  
+
   if (++hr==13)
   {
     hr=1;
@@ -255,7 +269,7 @@ void buttonsSetup()
   pinMode(A1, INPUT);
   digitalWrite(A1, HIGH);
 
-  // switch interrupts off while messing with their settings  
+  // switch interrupts off while messing with their settings
   cli();
   // Enable PCINT1 interrupt
   PCICR =0x02;
@@ -313,7 +327,7 @@ void buttonS1()
 }
 
 void buttonS2()
-{    
+{
   // need to be in display mode to change
   if (settings_mode == DISPLAY)
   {
@@ -344,20 +358,20 @@ void buttonS2()
   else if (settings_mode == SET_ALARM)
   {
     // switch between alarm enabled and disabled
-    alarm_enabled ^= 1;
+    alarm.enabled ^= 1;
   }
   else if (settings_mode == SET_ALARM_HR)
   {
-    if (++alarm_hr==13)
+    if (++alarm.hr==13)
     {
-      alarm_hr=1;
+      alarm.hr=1;
     }
   }
   else if (settings_mode == SET_ALARM_MIN)
   {
-    if (++alarm_min==60)
+    if (++alarm.min==60)
     {
-      alarm_min=1;
+      alarm.min=1;
     }
   }
 }
