@@ -385,15 +385,15 @@ void buttonS2()
 // action to be done every 1 sec
 void increaseSecond()
 {
-	//keep track of time
-	// using 2 instead of 60 to make it faster
+	// increase seconds
 	if (++time.sec==60)
 	{
 		time.sec=0;
-		// minutes
+		// increase minute every 60 seconds
 		if (++time.min==60)
 		{
 			time.min=0;
+      // increase hour every 60 seconds
 			increaseHour();
 		}
 	}
