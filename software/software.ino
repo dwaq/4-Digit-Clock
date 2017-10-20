@@ -128,6 +128,24 @@ void loop() {
   {
     displayDigits(SET_ALARM_MIN, BLANK, BLANK, alarm.min/10, alarm.min%10);
   }
+
+  // S1 button pressed in interrupt
+  if (buttonBlockA0 == 10)
+  {
+    // reduce so it doesn't get caught in a loop
+    buttonBlockA0--;
+    // S1 handler
+    buttonS1();
+  }
+
+  // S2 button pressed in interrupt
+  if (buttonBlockA1 == 10)
+  {
+    // reduce so it doesn't get caught in a loop
+    buttonBlockA1--;
+    // S2 handler
+    buttonS2();
+  }
 }
 
 // correctly move through settings states
@@ -221,7 +239,8 @@ ISR(PCINT1_vect) {
   {
     // set to 10
     buttonBlockA0 = 10;
-    buttonS1();
+
+    // will handle press in main loop
   }
   // release A0
   if (digitalRead(A0)==1)
@@ -238,7 +257,8 @@ ISR(PCINT1_vect) {
   {
     // set to 10
     buttonBlockA1 = 10;
-    buttonS2();
+
+    // will handle press in main loop
   }
   // release A1
   if (digitalRead(A1)==1)
