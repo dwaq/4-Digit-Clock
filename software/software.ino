@@ -55,7 +55,7 @@ void setup() {
   alarm.hr = 12;
   alarm.min = 0;
   alarm.time_of_day = 1;
-  alarm.enabled = 1;
+  alarm.enabled = 0;
   alarm.play = 0;
 
   // set display pins to outputs
