@@ -299,13 +299,16 @@ void buttonS2()
   }
   else if (settings_mode == SET_ALARM_HR)
   {
-    if (++alarm.hr==13)
+    // switch time of day when transitioning from 11 to 12
+    if (++alarm.hr==12)
     {
-      alarm.hr=1;
       // flip between AM and PM
       alarm.time_of_day ^= 1;
-      // TODO: set LED coorespoding to time
-      // but rememeber to unset it when moving to next state
+    }
+  
+    if (alarm.hr==13)
+    {
+      alarm.hr=1;
     }
   }
   else if (settings_mode == SET_ALARM_MIN)
