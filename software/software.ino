@@ -183,35 +183,6 @@ void nextSettingState(void)
   }
 }
 
-// increase hour by 1 and handle AM/PM
-void increaseHour(void)
-{
-  // play chime on the hour if enabled
-  // and it's in clock mode (not setting time)
-  if (hr_chime_enabled && (settings_mode == CLOCK))
-  {
-    // send 133 frequency tone for 333 ms to pin 3
-    tone(3, 133, 333);
-  }
-
-  if (++time.hr==13)
-  {
-    time.hr=1;
-
-    // flip between AM and PM
-    time.time_of_day ^= 1;
-
-    // change LED to match
-    if (time.time_of_day)
-    {
-      ledPm();
-    }
-    else{
-      ledAm();
-    }
-  }
-}
-
 // Hack to get pin change interrupts on analog pins
 // http://www.geertlangereis.nl/Electronics/Pin_Change_Interrupts/PinChange_en.html
 void buttonsSetup()
@@ -361,4 +332,33 @@ void increaseSecond()
 
 	// flip decimal point every second
 	time.dp ^= 1;
+}
+
+// increase hour by 1 and handle AM/PM
+void increaseHour(void)
+{
+  // play chime on the hour if enabled
+  // and it's in clock mode (not setting time)
+  if (hr_chime_enabled && (settings_mode == CLOCK))
+  {
+    // send 133 frequency tone for 333 ms to pin 3
+    tone(3, 133, 333);
+  }
+
+  if (++time.hr==13)
+  {
+    time.hr=1;
+
+    // flip between AM and PM
+    time.time_of_day ^= 1;
+
+    // change LED to match
+    if (time.time_of_day)
+    {
+      ledPm();
+    }
+    else{
+      ledAm();
+    }
+  }
 }
