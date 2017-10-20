@@ -169,7 +169,8 @@ void nextSettingState(void)
 void increaseHour(void)
 {
   // play chime on the hour if enabled
-  if (hr_chime_enabled)
+  // and it's in clock mode (not setting time)
+  if (hr_chime_enabled && (settings_mode == CLOCK))
   {
     // send 133 frequency tone for 70 ms to pin 3
     tone(3, 133, 70);
