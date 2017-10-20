@@ -139,6 +139,16 @@ void loop() {
   else if (settings_mode == SET_ALARM_MIN)
   {
     displayDigits(SET_ALARM_MIN, BLANK, BLANK, alarm.min/10, alarm.min%10);
+    
+    // change LED to match time
+    // (back to normal behavior after setting LED to alarm time of day in last state)
+    if (time.time_of_day)
+    {
+      ledPm();
+    }
+    else{
+      ledAm();
+    }
   }
 
   // S1 button pressed in interrupt
