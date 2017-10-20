@@ -27,6 +27,8 @@ struct AlarmType {
   // AM/PM for alarm
   // 0 = AM // 1 = PM
   int time_of_day;
+  // alarm going off
+  int play;
 };
 AlarmType alarm;
 
@@ -54,6 +56,7 @@ void setup() {
   alarm.min = 0;
   alarm.time_of_day = 1;
   alarm.enabled = 1;
+  alarm.play = 0;
 
   // set display pins to outputs
   displaySetup();
@@ -239,10 +242,22 @@ ISR(PCINT1_vect) {
   // press A0
   if (digitalRead(A0)==0 && buttonBlockA0==0)
   {
-    // set to 10
-    buttonBlockA0 = 10;
+    // pressing button stops alarm
+    if (alarm.play == 1)
+    {
+      noTone(3);
+      alarm.play = 0;
 
-    // will handle press in main loop
+      // set to a smaller value so bouncing dones't trigger interrupt
+      buttonBlockA0 = 9;
+    }
+    // else do normal behavior
+    else {
+      // set to 10
+      buttonBlockA0 = 10;
+      
+      // will handle press in main loop
+    }
   }
   // release A0
   if (digitalRead(A0)==1)
@@ -257,10 +272,23 @@ ISR(PCINT1_vect) {
   // press A1
   if (digitalRead(A1)==0 && buttonBlockA1==0)
   {
-    // set to 10
-    buttonBlockA1 = 10;
+    // pressing button stops alarm
+    if (alarm.play == 1)
+    {
+      noTone(3);
+      alarm.play = 0;
 
-    // will handle press in main loop
+      // set to a smaller value so bouncing doesn't trigger interrupt
+      buttonBlockA1 = 9;
+    }
+    // else do normal behavior
+    else
+    {
+      // set to 10
+      buttonBlockA1 = 10;
+      
+      // will handle press in main loop
+    }
   }
   // release A1
   if (digitalRead(A1)==1)
