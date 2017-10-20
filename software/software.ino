@@ -351,21 +351,48 @@ void buttonS2()
 // action to be done every 1 sec
 void increaseSecond()
 {
-	// increase seconds
-	if (++time.sec==60)
-	{
-		time.sec=0;
-		// increase minute every 60 seconds
-		if (++time.min==60)
-		{
-			time.min=0;
+  // increase seconds
+  if (++time.sec==60)
+  {
+    time.sec=0;
+    // increase minute every 60 seconds
+    if (++time.min==60)
+    {
+      time.min=0;
       // increase hour every 60 seconds
-			increaseHour();
-		}
-	}
+      increaseHour();
+      
+      // Should the alarm sound?
+      // go in small steps so less processing if it shouldn't
+      
+      // check if enabled
+      if (alarm.enabled)
+      {
+        // check if correct time of day
+        if (alarm.time_of_day ==  time.time_of_day)
+        {
+          // check if correct hour
+          if (alarm.hr == time.hr)
+          {
+            // check if correct minute
+            if (alarm.min == time.min)
+            {
+              // would only get here when second == 0, so don't need to check that
+        
+              // play a tone for a minute
+              tone(3, 133, 60000);
 
-	// flip decimal point every second
-	time.dp ^= 1;
+              // set a flag so we can turn off alarm
+              alarm.play = 1;
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  // flip decimal point every second
+  time.dp ^= 1;
 }
 
 // increase hour by 1 and handle AM/PM
