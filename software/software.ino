@@ -221,8 +221,6 @@ ISR(PCINT1_vect) {
   {
     // set to 10
     buttonBlockA0 = 10;
-    // send 133 frequency tone for 70 ms to pin 3
-    tone(3, 133, 70);
     buttonS1();
   }
   // release A0
@@ -240,8 +238,6 @@ ISR(PCINT1_vect) {
   {
     // set to 10
     buttonBlockA1 = 10;
-    // send 133 frequency tone for 70 ms to pin 3
-    tone(3, 133, 70);
     buttonS2();
   }
   // release A1
@@ -255,14 +251,30 @@ ISR(PCINT1_vect) {
   }
 }
 
+void buttonBuzzer()
+{
+  // send 133 frequency tone for 70 ms to pin 3
+  tone(3, 133, 70);
+  // wait 70ms for tone to finish
+  delay(70);
+  // in case it didn't finish, kill it
+  noTone(3);
+}
+
 void buttonS1()
 {
+  // play tone
+  buttonBuzzer();
+  
   // go to next settings state
   nextSettingState();
 }
 
 void buttonS2()
 {
+  // play tone
+  buttonBuzzer();
+  
   // need to be in clock display mode to change these settings
   if (settings_mode == CLOCK)
   {

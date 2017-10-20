@@ -26,6 +26,7 @@ extern "C" {
 
 // For buttons:
 void buttonsSetup(void);
+void buttonBuzzer(void);
 void buttonsS1(void);
 void buttonsS2(void);
 
