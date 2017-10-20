@@ -61,6 +61,9 @@ void setup() {
   // set LED pin to output
   ledSetup();
 
+  // start at PM
+  ledPm();
+
   // set button pins to interrupt-enabled inputs
   buttonsSetup();
 
