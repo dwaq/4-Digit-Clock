@@ -126,6 +126,15 @@ void loop() {
   else if (settings_mode == SET_ALARM_HR)
   {
     displayDigits(SET_ALARM_HR, BLANK, BLANK, alarm.hr/10, alarm.hr%10);
+    
+    // change LED to match alarm
+    if (alarm.time_of_day)
+    {
+      ledPm();
+    }
+    else{
+      ledAm();
+    }
   }
   else if (settings_mode == SET_ALARM_MIN)
   {
