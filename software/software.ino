@@ -81,7 +81,16 @@ void loop() {
     // HH:MM
     if(time.display)
     {
-      displayDigits(time.hr/10, time.hr%10, time.dp, time.min/10, time.min%10);
+      // don't display leading 0 for hours
+      // display 2:00 instead of 02:00
+      if (time.hr < 10)
+      {
+        displayDigits(BLANK, time.hr%10, time.dp, time.min/10, time.min%10);
+      }
+      else
+      {
+        displayDigits(time.hr/10, time.hr%10, time.dp, time.min/10, time.min%10);
+      }
     }
     // MM:SS
     else
