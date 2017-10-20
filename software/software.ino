@@ -348,10 +348,9 @@ void increaseHour(void)
     tone(3, 133, 333);
   }
 
-  if (++time.hr==13)
+  // switch time of day when transitioning from 11 to 12
+  if (++time.hr==12)
   {
-    time.hr=1;
-
     // flip between AM and PM
     time.time_of_day ^= 1;
 
@@ -363,5 +362,10 @@ void increaseHour(void)
     else{
       ledAm();
     }
+  }
+
+  if (time.hr==13)
+  {
+    time.hr=1;
   }
 }
