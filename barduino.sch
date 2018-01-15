@@ -6763,6 +6763,7 @@ Source: www.kingbright.com</description>
 <part name="R11" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-US_" device="R1206" package3d_urn="urn:adsk.eagle:package:26062/1"/>
 <part name="R10" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-US_" device="R1206" package3d_urn="urn:adsk.eagle:package:26062/1"/>
 <part name="U$5" library="4-Digit-Clock" deviceset="MICRO-USB-PWR" device=""/>
+<part name="R13" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-US_" device="R1206" package3d_urn="urn:adsk.eagle:package:26062/1"/>
 </parts>
 <sheets>
 <sheet>
@@ -6821,14 +6822,14 @@ Header</text>
 <attribute name="VALUE" x="187.96" y="48.26" size="1.778" layer="96"/>
 </instance>
 <instance part="R9" gate="G$1" x="219.71" y="99.06" rot="R90"/>
-<instance part="P+2" gate="VCC" x="31.75" y="106.68"/>
+<instance part="P+2" gate="VCC" x="33.02" y="106.68"/>
 <instance part="S0" gate="2" x="104.14" y="35.56" rot="R270"/>
-<instance part="C2" gate="1" x="31.75" y="93.98" rot="R90"/>
+<instance part="C2" gate="1" x="33.02" y="93.98" rot="R90"/>
 <instance part="C7" gate="1" x="213.36" y="46.99" rot="R90"/>
 <instance part="U$1" gate="G$1" x="246.38" y="59.69"/>
 <instance part="ICSP" gate="A" x="148.59" y="109.22"/>
 <instance part="GND2" gate="1" x="153.67" y="67.31"/>
-<instance part="GND1" gate="1" x="31.75" y="78.74"/>
+<instance part="GND1" gate="1" x="33.02" y="78.74"/>
 <instance part="P+1" gate="VCC" x="219.71" y="110.49"/>
 <instance part="S1" gate="2" x="152.4" y="35.56" rot="R270"/>
 <instance part="P+4" gate="VCC" x="163.83" y="123.19"/>
@@ -6855,19 +6856,20 @@ Header</text>
 <instance part="R11" gate="G$1" x="115.57" y="71.12" rot="R270"/>
 <instance part="R10" gate="G$1" x="102.87" y="93.98" rot="R180"/>
 <instance part="U$5" gate="G$1" x="15.24" y="92.71" rot="MR0"/>
+<instance part="R13" gate="G$1" x="26.67" y="97.79" rot="R180"/>
 </instances>
 <busses>
 </busses>
 <nets>
 <net name="VCC" class="1">
 <segment>
-<wire x1="31.75" y1="104.14" x2="31.75" y2="97.79" width="0.1524" layer="91"/>
+<wire x1="33.02" y1="104.14" x2="33.02" y2="97.79" width="0.1524" layer="91"/>
 <pinref part="C2" gate="1" pin="2"/>
 <pinref part="P+2" gate="VCC" pin="VCC"/>
-<wire x1="31.75" y1="97.79" x2="31.75" y2="96.52" width="0.1524" layer="91"/>
-<junction x="31.75" y="97.79"/>
-<wire x1="20.32" y1="97.79" x2="31.75" y2="97.79" width="0.1524" layer="91"/>
-<pinref part="U$5" gate="G$1" pin="1"/>
+<wire x1="33.02" y1="97.79" x2="33.02" y2="96.52" width="0.1524" layer="91"/>
+<wire x1="31.75" y1="97.79" x2="33.02" y2="97.79" width="0.1524" layer="91"/>
+<junction x="33.02" y="97.79"/>
+<pinref part="R13" gate="G$1" pin="1"/>
 </segment>
 <segment>
 <pinref part="ICSP" gate="A" pin="2"/>
@@ -6902,6 +6904,11 @@ Header</text>
 <pinref part="P+5" gate="VCC" pin="VCC"/>
 <wire x1="115.57" y1="118.11" x2="115.57" y2="124.46" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="U$5" gate="G$1" pin="1"/>
+<wire x1="21.59" y1="97.79" x2="20.32" y2="97.79" width="0.1524" layer="91"/>
+<pinref part="R13" gate="G$1" pin="2"/>
+</segment>
 </net>
 <net name="GND" class="1">
 <segment>
@@ -6916,11 +6923,11 @@ Header</text>
 </segment>
 <segment>
 <pinref part="C2" gate="1" pin="1"/>
-<wire x1="20.32" y1="87.63" x2="31.75" y2="87.63" width="0.1524" layer="91"/>
-<wire x1="31.75" y1="87.63" x2="31.75" y2="88.9" width="0.1524" layer="91"/>
+<wire x1="20.32" y1="87.63" x2="33.02" y2="87.63" width="0.1524" layer="91"/>
+<wire x1="33.02" y1="87.63" x2="33.02" y2="88.9" width="0.1524" layer="91"/>
 <pinref part="GND1" gate="1" pin="GND"/>
-<wire x1="31.75" y1="81.28" x2="31.75" y2="87.63" width="0.1524" layer="91"/>
-<junction x="31.75" y="87.63"/>
+<wire x1="33.02" y1="81.28" x2="33.02" y2="87.63" width="0.1524" layer="91"/>
+<junction x="33.02" y="87.63"/>
 <pinref part="U$5" gate="G$1" pin="5"/>
 </segment>
 <segment>
