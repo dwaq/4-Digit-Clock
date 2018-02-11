@@ -410,6 +410,9 @@ void increaseSecond()
       
             // play a tone for a minute
             tone(3, 133, 60000);
+            // it'll turn off after a minute, but will still require a button press
+            // to get out of this mode
+            // not worth adding another check for this
 
             // set a flag so we can turn off alarm
             alarm.play = 1;
