@@ -389,30 +389,30 @@ void increaseSecond()
       time.min=0;
       // increase hour every 60 seconds
       increaseHour();
-      
-      // Should the alarm sound?
-      // go in small steps so less processing if it shouldn't
-      
-      // check if enabled
-      if (alarm.enabled)
-      {
-        // check if correct time of day
-        if (alarm.time_of_day ==  time.time_of_day)
-        {
-          // check if correct hour
-          if (alarm.hr == time.hr)
-          {
-            // check if correct minute
-            if (alarm.min == time.min)
-            {
-              // would only get here when second == 0, so don't need to check that
-        
-              // play a tone for a minute
-              tone(3, 133, 60000);
+    }
 
-              // set a flag so we can turn off alarm
-              alarm.play = 1;
-            }
+    // Check if the alarm should sound
+    // go in small steps so less processing if it shouldn't
+    
+    // check if enabled
+    if (alarm.enabled)
+    {
+      // check if correct time of day
+      if (alarm.time_of_day ==  time.time_of_day)
+      {
+        // check if correct hour
+        if (alarm.hr == time.hr)
+        {
+          // check if correct minute
+          if (alarm.min == time.min)
+          {
+            // would only get here when second == 0, so don't need to check that
+      
+            // play a tone for a minute
+            tone(3, 133, 60000);
+
+            // set a flag so we can turn off alarm
+            alarm.play = 1;
           }
         }
       }
