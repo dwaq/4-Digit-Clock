@@ -396,6 +396,16 @@ Source: http://www.hirose.co.jp/cataloge_hp/e24000019.pdf</description>
 <technology name=""/>
 </technologies>
 </device>
+<device name="LARGE-PADS" package="DX4R005HJ5-PWR-PADS">
+<connects>
+<connect gate="G$1" pin="1" pad="VBUS"/>
+<connect gate="G$1" pin="5" pad="GND"/>
+<connect gate="G$1" pin="S1*4" pad="S1 S2 S3 S4"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
 </devices>
 </deviceset>
 </devicesets>
